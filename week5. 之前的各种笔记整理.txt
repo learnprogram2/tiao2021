@@ -1,0 +1,32 @@
+sf.1 浏览快速整理 git, maven
+sf.2 业务需求分析
+sf.3 项目v1.0流程, 设计模式
+sf.4 spring-cloud: eureka, ribbon, feign, hystrix, zuul
+
+
+TODO
+4. 经验整理:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
