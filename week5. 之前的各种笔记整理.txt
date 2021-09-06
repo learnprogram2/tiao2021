@@ -1,7 +1,13 @@
-sf.1 浏览快速整理 git, maven
-sf.2 业务需求分析
-sf.3 项目v1.0流程, 设计模式
-sf.4 spring-cloud: eureka, ribbon, feign, hystrix, zuul
+sf.1 浏览快速整理 git, maven      √
+sf.2 业务需求分析                 √
+sf.3 项目v1.0流程, 设计模式        √
+sf.4 spring-cloud: eureka, ribbon, feign, hystrix, zuul     √
+
+TODO: eureka的90s判断错误是哪里的????
+
+
+内部的面试图集第二季
+
 
 希望: JDK集合, JUC
 
