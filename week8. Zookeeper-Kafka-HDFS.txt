@@ -6,6 +6,10 @@ sf.17. Zookeeper
 sf.18. Kafka
 sf.19. HDFS, ES之类的概括知识
 
+jl: 23-25准备
+1. 4个项目的流程图
+
+
 TODO
 4. 经验整理:
 
