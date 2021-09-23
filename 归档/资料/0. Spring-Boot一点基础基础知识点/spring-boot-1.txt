@@ -1,0 +1,361 @@
+Spring-boot - Introduction
+	1. starter template:
+		spring-boot 项目的父项目是spring-boot-starter-parent, 
+			parent的父项目是:spring-boot-dependencies, dependencyManagement里包含了了以后依赖的版本.
+			parent里面有一些pluginManagement, 还有resource的地址.
+		比如:spring-boot-starter-web:
+			里面会引用一些依赖, 比如spring-boot-starter-tomcat之类的.
+		所有的template在:spring-boot/spring-boot-project/spring-boot-starters
+		
+			
+	2. Spring-boot autoconfiguration:
+		自动配置可以用@EnableAutoConfiguration开启, 自动扫描classpath下的lib, 自动的注册所有的beans
+			这个注解和它的逻辑在spring-boot-autoconfiguration这个包里, 应该是通过spring-boot-starter引入的.
+			自动配置可以在我们自己手动配置了之后, 自动地退后(back-away)
+		自动配置是spring-boot/spring-boot-project/spring-boot-autoconfigure 这个项目
+
+
+	3. 嵌入server:
+		spring-boot把tomcat作为了内置server, 这让我们的application通过命令行自己启动.
+		也可以把tomcat换成jetty之类的. 在web里把tomcat的starter排除掉, 放入jetty的starter
+
+	4. bootstrap the application
+		使用`@SpringBootApplication`注解, 提供了configuration和自动化配置和扫描bean.
+		这个注解会把我们的bean/configFile扫描到springContext里
+		
+	5. spring-boot的优点:
+		解决依赖冲突. 版本冲突, 减少classloader的issues
+		默认配置, 只有需要的时候手动配置. 减少了xml之类的模板配置
+		提供了内置的HTTPServer Tomcat可以快速启动.
+		各种IDE里面有很好的集成.
+		
+	6. Spring-boot Configuration:
+		1. list...
+	
+	7. 微服务/APIs的开发.
+	
+	8. 其他的一些文章: jsp, scheduling, readSource....之类的
+
+
+	
+Spring-boot Starter Parent: 
+	`spring-boot-starter-parent`这个依赖在所有的spring-boot里面控制着版本.
+	上面说了
+
+
+Spring-boot-starter Maven Templates:
+	各种lib和依赖数量很多, 我们需要区分和指定使用的lib, spring-boot有50+个starterModules(都在stater那个module里)
+	提供很多流行framework的ready-to-use的集成lib.
+	
+Spring boot multi-module maven project example:
+	多个module的项目, 父项目是spring-boot了子模块就是了, 因为子模块会继承父模块的依赖.
+	1. spring-boot-starter-parent:
+		父项目继承了了这个模块就变成了spring-boot项目.
+	2. 子模块: ear, war, jar
+		子模块可以是任何打包方式, 
+	3. maven的build 就是普通的父子项目的build关系...
+	
+Spring Boot Annotations
+	Annotation就放在autoconfiguration项目里面, 这个介绍一些常用的annotations
+	1. @SpringBootApplication
+		springboot主要就是自动配置, 自动配置主要靠自动扫描component, 
+		扫描classpath下面所有贴着@Component的class.
+		扫描@Configuration的class来把用户配置的bean给扫出来.
+		1. @EnableAutoConfiguration : enable auto-configuration mechanism
+			???不太清楚自动配置机制, 和下面两个不是一样么?
+		2. @ComponentScan : enable @Component scan
+		3. @SpringBootConfiguration : register extra beans in the context
+	2. @EnableAutoConfiguration: 上面被包含的.
+		开启了springContext的自动配置, 它会试图去猜测和配置一些我们可能需要的beans 根据我们classpath下预先定义的类.
+		比如: 如果我们classpath下有tomcat-embedded.jar, 我们可能会需要`TomcatServletWebServerFactory`
+		一般贴在configurationBean上面, 这些自动配置bean会被`SpringFactoriesLoader` 定位.
+		ConfigurationClass里面配置的bean可以有`@Conditional`, 这样就在条件满足的时候才注册.
+	3. @SpringBootConfiguration: 
+		这个注解表示, 这个bean就是一个注解bean. 等同于`@Configuration`, 但`SpringBootCOnfiguration`会自动定位.(在集成测试时候很有用.
+		但是, application只能由一个这个注解的bean.
+	4. @ImportAutoConfiguration:
+		这个会导入指定的配置class, 上面的EnableAutoCOnfiguration会自动的扫描classpath下面的.
+	5. @AutoConfigureBefore, @AutoConfigureAfter, @AutoConfigureOrder
+		这几个注解用在注解类的加载顺序调整上: @AutoConfigureAfter(CacheAutoConfiguration.class)
+	6. Condition Annotations
+		所有的auto-configuration的bean一般都有@Conditional(), 这个bean当conditional满足的时候才会注册
+		@ConditionalOnBean and @ConditionalOnMissingBean: 在有/没有某个bean的时候才会注册这个bean
+		@ConditionalOnClass and @ConditionalOnMissingClass
+		...
+
+Spring Boot Auto Configuration
+	spring-boot很好用是因为它有好多默认配置(under-the-hood), 一个好的开发者应该知道sprint-boot具体干了什么, 怎么去使用和disable某一部分. 巴拉巴拉
+	1. 想要理解spring-boot具体干的最基础的事情, 我们建立一个最简单的application, 开始分析启动的log
+	2. Application.class这个类干的事情:
+		1. 创建Spring ApplicationContext.
+		2. 接收command-line作为spring的properties
+		3. 通过EnableAutoConfiguration把所有需要注册的bean都注册了.
+	3. @SpringBootApplication这个注解就帮助上面干了注册的事情, config, 扫描.
+	4. 运行看log: 开启`-Ddebug=true`VM参数
+		```text
+		   ConfigurationPropertiesRebinderAutoConfiguration matched:
+		   - @ConditionalOnBean (types: org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor; SearchStrategy: all) found bean 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor' (OnBeanCondition)
+		```
+		会发现很多上面的, 它是在扫描了很多condition的configurationBean的时候, 扫到了很多应该注册的bean.
+		因为condition嘛, 每次加减依赖的时候都会有变化.
+
+Spring Boot AOP 使用
+	学习Spring-Boot里面的AOP实现, 使用AspectJ添加不同的AOP Advices来支持cross-cutting concerns.
+	1. 使用Spring-Boot来设置AOP.
+		AOP可以用spring-boot-starter-aop依赖来引入(其实已经被starter引入了). 
+		在配置文件里可以设置开启AOP: spring.aop.auto = false
+	2. Create Aspects with @Aspect
+		aspect注解放在component上面.
+		方法上加@Around/@Before之类的注解就可以了.
+		
+spring Boot Logging
+	spring-boot里面的Logging非常灵活很好配置. 支持很多的loggingProviders. 
+	1. 默认的不用配置的Logging:
+		Logback是默认的logging, 
+		1. 添加log的statement: 使用LoggerFactory.getLogger(xxx.class)拿到logger
+		2. application.properties里可以配置Logging_Level: debug=true
+			也可以指定某个包下的输出级别: logging.level.org.springframework=ERROR 
+		3. Log_Format: spring-boot在resource里面有定义, 
+			我们可以在配置文件里: logging.pattern.file= %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
+		4. 输出文件: logging.pattern.file= %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
+	2. Logback Logging:
+		默认的, 已经很好了. 如果在企业应用里需要更好的控制来应对复杂的需求, 可以专门配置一下Logging.
+		可以在classpath里面自定义`logback.xml`文件来好好的配置, logging.config指定在配置文件里.
+	3. Log4j2 Logging:
+		1. 把logback排除掉, 添加log4j2的依赖`spring-boot-starter-log4j2`.
+		2. 添加log4j2.xml的配置文件...也指定一下.
+		3. 之前用的Slf4j: 如果用的`org.slf4j.LoggerFactory` 什么都不用改.
+			如果只用log4j2, 那么就用`org.apache.logging.log4j.LogManager`
+	4. 其他的具体的例子, ...
+
+
+Spring Boot Devtools Tutorial
+	如果你用过UI开发框架(Node/angular), 就会发现热更新调试很好.
+	spring-boot相同的功能在`spring-boot-devtools` 
+	1. 开启 DevToolsModule:
+		非常简单, 加入`spring-boot-devtools`依赖, 把生命周期放在编译
+	2. 静态资源缓存
+		dev-tools把静态资源/模板文件缓存了, 但是在测试时候可能会有问题, 我们可以关掉(缓存默认关闭的)
+		也有其他的模板缓存, 都关闭掉: spring.groovy.template.cache = false
+	3. 自动UI刷新
+		如果浏览器支持, devtools内嵌了LiveReloadserver, 可以在resource更改的时候trigger一次浏览器刷新.
+		默认开启. spring.devtools.livereload.enabled=false
+	4. 把一些resource 取消自动刷新:
+		默认的话, 自动刷新包括的目录: /resources, /static, /public, /templates, /META-INF/maven,resources
+		配置取消一些: spring.devtools.restart.exclude=static/**,public/**
+		配置增加一些: spring.devtools.restart.additional-paths=scripts/**
+	5. 服务器自动重启:
+		自动重启会把class和配置重刷一遍, 
+	
+Spring Boot war Packaging Example
+	spring-boot默认打包是jar包, 如果想打war包, 放在其他的服务器上.
+	1. pom文件声明war包
+	2. 把内置的tomcat/...服务器的依赖设置成provide生命周期, 这样打包的时候就不会打进去.
+
+Spring Boot 2 REST API Example
+	1. demo
+		怎么设置restAPI, 返回JSON. 
+		1. 依赖: starter-web依赖. 再加个测试依赖就好了.
+		2. 写主类和一些配置
+		3. 建立contorller, 使用@RestController.
+			加上@RquestMapping.
+		4. 写一些RequestDTO/ResponseDTO作
+		5. 建立ExceptionHandler:
+			使用@ControllerAdvice建一个advicer, 里面可以建立一些
+			@ExceptionHandler(ServletRequestBindingException.class)方法去拦截和处理exception.
+	2. Consume and Produce JSON
+		1. REST API接收发送的Body都是JSON格式, JSON lib: Gson, Jackson, JSON-B
+			jackson是默认和建议的
+		2. Jackson
+			1. 自动配置, 默认包含了jackson2的依赖, 是starter-json里的一部分.
+				配置的类是 `JacksonAutoConfiguration`, 里面会注册.
+			2. JSON Response:
+				API返回的Obj, 自动被Jackson修饰成JSON
+				`MappingJackson2HttpMessageConverter`这个类渲染request和response变成json.
+			3. 配置:
+				可以在properties里面配置一些转换的格式:
+					spring.jackson.date-format=
+					spring.jackson.mapper.*= ...
+				也可以在ConfigurationBean里面注册一个Jackson2ObjectMapperBuilderCustomizer bean.
+		3. Gson
+			1. 依赖: 添加gson依赖
+			2. 自动配置: spring.http.converters.preferred-json-mapper=gson
+			3. 自定义配置: spring.gson.date-format= ...
+		4. JSON-B:
+			JSON-B是最新的javaEE规范里的把JSON和Obj的转换
+			1. 依赖:javax.json.bind-api, yasson, javax.json
+			2. 自动配置: spring.http.converters.preferred-json-mapper=jsonb
+	3. @Async RestController:
+		使用@EnableAsync和@Async来创建异步controller方法. 使用的是Java ExecutorService框架的线程池
+		1. 配置线程池:
+			在configuration类里面添加@EnableAsync可以开启@Async方法, 在@Async里也可以指定线程池.
+			可以在配置类里自己建一个ThreadPoolTaskExecutor, 到时候用它就好了.
+		2. @Async标记方法, 就可以在后台运行了, 返回值是Future, 到时候可以拿
+		3. combine 异步方法 的结果: CompletableFuture.allOf(methodOne, methodTwo, methodThree).join();
+		```java
+			CompletableFuture<EmployeeAddresses> employeeAddress = service.getEmployeeAddress();
+			CompletableFuture<EmployeeNames> employeeName = service.getEmployeeName();
+			CompletableFuture<EmployeePhone> employeePhone = service.getEmployeePhone();
+			// Wait until they are all done
+			CompletableFuture.allOf(employeeAddress, employeeName, employeePhone).join();
+		```
+	4. Spring boot SseEmitter
+		1. SseEmitter class(Server-Sent Events): 
+			SseEmitter可以从server给client发送events. 发送的event里面Content-Type是text/event-stream.
+			这些时间非常简单, 只有四个参数: ID(事件的id), event(事件类型), data(事件的数据), retry(重新连接的时间间隔)
+		2. 怎么用这个SseEmitter:
+			创建一个SseEmitter, 在请求的时候就返回给client, 拿到这个emitter, 在需要的地方, 发送一些事件(可以用SseEventBuilder build出来)
+			最后不想用了可以用emitter.complete关闭
+		3. 测试, 可以用MockMVC来模拟浏览器, 请求接口拿到事件.
+	5. ResponseBodyEmitter:
+		ResponseBodyEmitter, 之后发送的事件放在body里面返回.
+	6. Callable interface:
+		restAPI也可以响应Callable<String>(){}
+	7. Unit Test: 
+		1. 依赖: starter-test依赖(排除junit依赖.), 添加Junit5依赖, 添加mokito-junit-jupiter mock依赖.
+		2. Integration Test: https://howtodoinjava.com/spring-boot2/testing/spring-integration-testing/
+	8. Gzip compression: 
+		开启HTTP响应的gzip压缩, 也可以应用在图片/txt压缩上.
+		1. 配置: 
+			# Enable response compression
+			server.compression.enabled=true 
+			# Minimum response where compression will kick in
+			server.compression.min-response-size=4096 
+			# Mime types that should be compressed
+			server.compression.mime-types=text/html, text/xml, text/plain, text/css, text/javascript, application/javascript, application/json
+		2. 不支持mime-type的通配符匹配.
+	9. Message的Internationalization(国际化):
+		通过自动配置MessageSource bean和指定message.properties文件来让s-bRESTAPI添加了i18n.
+
+
+Spring boot crud operations example with hibernate
+	...
+	
+Spring Boot – OAuth2 Authorization and Resource Servers
+	建立authorizationServer去通过access_token认证请求
+	1. OAuth2 是什么:
+		HTTP protocol的认证方法, oauth2允许第三方的程序遵循limit去连接我们的HTTPService
+	... 我用不到,,
+
+Spring Boot Unit Test: 
+	demo和特种注解: https://howtodoinjava.com/spring-boot2/testing/testing-support/
+
+
+Spring Boot RestTemplate:
+	1. RestTemplate-Introduction:
+		restTemplate提供模板化的方法让开发者能更简单地发送同步的 HTTP 请求
+	2. 用到再看
+
+Spring Boot Thymeleaf 页面模板
+	用到再看.
+
+Spring boot hibernate configuration example
+	Hibernate 是持久层的部分, 也可以用MaBatis. 用到再看.
+
+Spring Boot – DataSource configuration
+
+
+Spring boot exception handling – @ExceptionHandler example
+	上面说了, 配合@ControllerAdvice做exception的处理adviser
+	
+Spring boot caching tutorial with example
+	通过Spring的缓存支持来管理applicationCache, spring提供了一些很好用的功能而且抽象出来的CacheAPI非常好用.
+	1. caching是什么: ... springRestAPI会根据请求参数缓存响应结果.
+	2. cache的类型: 
+		1. 内存的缓存
+		2. 数据库缓存
+		3. web server缓存: 反向代理之类的, 也会缓存请求.
+		4. CDN缓存: 用户client侧的
+	3. Spring boot cache annotations
+		Spring提供了不同cacheProvider的api
+		1. @EnableCache:
+			开启注解驱动管理的能力, 在configuration上面, spring用concurrentHashMap做默认缓存, 我们可以override CacheManager.
+		2. @Cacheable:
+			
+	4. 注册CacheEngine:
+		s-b提供了cacheProvider继承了很多其他的 Redis/Jcache/EhCache之类的.
+	5. Spring boot 2 and ehcache 3 example
+		使用ehcache3
+		1. dependency: starter-cache, ehcache, cache-api
+		2. configuration: spring.cache.jcache.config=classpath:ehcache.xml
+		3. ehcache.xml: 就是普通的配置就好了.
+		4. CacheEventListener: 在cacheEntry CRUD的时候会有cacheEvent
+			implements CacheEventListener<Object, Object>
+		
+Spring retry module example with spring boot
+	我们可以使用spring的重试模块工具, 我们在调用一些方法的时候如果抛异常了, 我们会重试.
+	别的时候我们一般都是用loop里面连环调用, 比较麻烦容易出错.
+	spring可以用annotation做配置, retryLimit和fallbackMethod.
+	2. Spring Retry:
+		1. Spring retry annotations
+			1. @EnableRetry: 在配置文件上, 可以开启重试机制.
+			2. @Retryable: 指定重试的方法
+			3. @Recover: 指定fallback方法.
+		2. dependency: spring-retry, spring-aspects
+	
+Spring boot security rest basic authentication example
+	使用基础的authentication去保证REST API的安全.
+	1. 依赖: spring-boot-starter-security
+	2. 配置 WebSecurityConfigurerAdapter, 这个类帮助我们做认证.
+		设置一个配置类来extends WebSecurityConfigurerAdapter.
+	3. demo: 用到的时候再了解.
+
+
+Spring Boot with H2 Database
+	1. H2 DB是流行的in-memory数据库, java实现的, 可以继承在JavaApplication里面在clientserver里
+		spring-boot提供了完美集成.
+	2. Dependency: h2
+	3. Configuration 
+		1. 可以在配置文件里简单的配置URL, username之类的.
+		2. 内存数据不稳定, 重启会消失. 可以配置存储的地方.
+	4. 创建schema, 在数据库创建的时候插入数据:
+		schema.sql 在里面写DDL数据库.
+		data.sql 里面插入数据.
+	
+	
+Gson with Spring boot 2
+	上面restfulAPI的介绍了使用
+	
+
+Spring Boot Remoting – Spring RMI annotation example
+	了解一下Remote Method Invocation In Spring.
+	基于HTTP的服务会影响性能, 拆包和封装会影响.
+	1. Spring remoting techniques
+		Remote Method Invocation: Spring实现的的RmiServiceExporter和RmiProxyFactoryBean
+		Spring’s HTTP invoker: HttpInvokerServiceExporter, HttpInvokerProxyFactoryBean 
+		Hessian: 清凉的HTTP-based protocol. HessianProxyFactoryBean 
+		Burlap: XML based protocol. BurlapServiceExporter, BurlapProxyFactoryBean
+	2. Create RMO Service:
+		创建一个RmiServiceExporter bean, 里面配置我们的serviceBean 和名字.
+	3. Create RMI Client:
+		配置一个RmiProxyFactoryBean, 里面配置Interface的接口类和URL(rmi://localhost:1099/helloworldrmi)
+		可以从context里面拿到这个负责RMI的bean了.
+	4. 依赖: 加入hessian, 创建HessianProxyFactoryBean.
+	
+	
+Spring boot – Send email with attachment(附件)
+	1. 依赖: spring-boot-starter-mail
+	2. 我用不到发邮件...
+
+Spring Boot Interview Questions
+	我面试再说.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+1. 修改maven mirror镜像, 保证可以从公司仓库下载
+2. mvn clean -DskipTests: 跳过test, 执行clean, 会新把依赖整理一遍
+3. 看maven执行台download 依赖的报错, 如果jar版本在仓库里没有, 就尽量修改一下变成有的.

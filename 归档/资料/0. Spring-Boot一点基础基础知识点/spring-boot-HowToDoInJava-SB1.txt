@@ -1,0 +1,117 @@
+Spring boot – CommandLineRunner interface example
+	`CommandLineRunner`接口允许我们运行一段代码在application初始化之后.
+	1. 使用: 建一个Component, 实现CommandLinerRunner, 实现run方法.
+	2. Spring Batch依赖这些CommandLineRunner来trigger Job的执行
+	
+Spring Boot – Configure Jetty Server
+	配置Jetty在2里面已经有了.
+
+Spring boot change default port of embedded server
+	修改Tomcat, 2里面也有, 很好修改.
+	
+Spring Boot – Changing Context Path
+	修改web的启动路径,
+	1. 配置: server.servlet.context-path=/ClientApp
+	 这样启动好了之后初始就是 localhost:port/ClientApp 了
+	2. bean配置, 添加一个WebServerFactoryCustomizer bean配置	
+		这个bean可以配置contextPath, 还可以port, address, errorPages...
+	
+	
+Spring Boot SSL [https] Example
+	需要使用自己的签名去做SSL连接. 也要学习怎么创建SSLCert.
+	
+	
+
+Spring Boot – Get all loaded beans with Class Type Information
+	从Context里面按照xxx拿到所有的bean
+	
+
+Spring Boot – Custom PropertyEditor Configuration Example
+	PropertyEditor是遵循JavaBeans规范的, Spring重重的使用了很多PropertyEditor去表示不同的properties, 比如在解析input为可读的, 或者展示在view层的数据.
+	spring在`org.springframework.beans.propertyeditors`包下有很多内置的PropertyEditor, 有Boolean的, Array的......
+	我们也可以创建自定义的PropertyEditor, 如果上面的数据格式不符合我们想要展示的.
+	1. 创建自定义的PropertyEditor:
+		IsbnEditor extends PropertyEditorSupport
+		实现两个方法, 就是set和get方法, 为了可读性的展示嘛.
+	2. 注册自定义的PropertyEditor:
+		@InitBinder标注建立一个binder方法, 这个方法在application启动的时候会扫描, 然后接收`WebDataBinder`参数,
+		接受了webDataBinder之后, 直接调用`registerCustomEditor()`方法注册
+	3. 使用:
+		在接受参数的时候, @PathVariable Isbn isbn, 这样就可以从url里面取一个字符串, 然后通过自己的propertyEditor解析出参数来了.
+		在FreeMarker之类的里面也可以展示参数${ isbn.displayValue }
+
+
+Spring boot @Scheduled annotation example
+	定时任务
+	1. @EnableScheduling: 在配置文件上开启定时任务
+	2. @Scheduling: 放在方法上, 就好了.
+
+Spring Boot Jersey Example
+	使用Jersey框架创建Web RestAPI, ... 没有这种需求;
+	这个框架好像是符合provides support for JAX-RS APIs xx协议的. 
+
+
+Spring Boot SOAP Webservice Example
+	SOAP: simple object access protocol, 使用简单对象通信的协议. 基于XML
+	不太需要...
+Spring Boot SOAP Client – WebServiceTemplate Example
+
+Spring Boot JMSTemplate with Embedded ActiveMQ
+	使用JSMTemplate来给ActiveMQ接收发送JMS message
+	1. 依赖: starter-activeMQ, activeMQ-broker, jackson-databind(jackson)
+	2. @EnableJms开启JavaMessageService, 
+		创建一个JmsListenerContainerFactory
+		创建一个MessageConvert(比如MappingJackson2MessageConverter), 把
+	3. 使用@JmsListener 接收MQ消息. 消息一般是POJO
+	4. 拿到JmsTemplate 发送.
+	
+Spring boot hello world example – Spring boot REST example
+	2已经说了RestAPI
+	
+	
+Spring Boot JSP View Resolver Example
+	没人用了吧...
+	
+
+Spring Boot Actuator
+	内置的HTTP endpoints来监控管理 job的运行. 我们引入这个功能, 就需要自己编辑, 引入Actuator模块.
+	1. 依赖: starter-actuator
+	2. 重要的Actuator endpoint:
+		我们暴露endpoints通过HTTP, 路径的前缀是'/actuator'
+		1. 默认的/health和/info信息通过API暴露, 可以配置所有的endpoints都暴露: management.endpoints.web.exposure.include=*
+			具体有哪些信息呢: 用到的时候自己去查. https://howtodoinjava.com/spring-boot/actuator-endpoints-example/
+		2. 还可以拿到dump文件, logfile...
+		3. securingEndpoint
+			也可以配置RoleBasic的安全endpoint
+		4. 可以关闭一些endpoint, 之开启自己需要的:
+			management.endpoints.enabled-by-default=false
+			management.endpoint.health.enabled=true
+		5. 也可以跨源共享资源文件... CORS
+		6. 还可以配置把响应cache.
+	3/ 
+	
+Spring Boot – Role Based Security with JAX-RS Annotations
+	/// 到时候用到再说. 知道有这个RBS功能
+	// 用到的时候为啥不用cloud里面的security呢.
+	
+Spring boot RSS feed with rome
+	sb可以生產和消費 RSS/Atom流,  RSS是简单的聚合API, XML格式的. Atom类似.
+	这里作者给我们两个小例子, 暴露RSS和ATOM两个API
+	1. 依赖: Rome这个框架.
+	2. 原理:
+		Spring里面有两个(RssChannelHttpMessageConverter and AtomFeedHttpMessageConverter), 把controller里面的响应给转成XML的feed格式.
+		
+
+Spring boot ehcache 2 example
+	缓存的配置可以看SB2里面的ehcache3配置.
+
+
+
+
+
+
+
+
+
+
+

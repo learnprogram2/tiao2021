@@ -1,0 +1,722 @@
+Connected to the target VM, address: '127.0.0.1:52997', transport: 'socket'
+2020-10-14 14:57:47 INFO  [background-preinit] org.hibernate.validator.internal.util.Version:21 - HV000001: Hibernate Validator 6.1.5.Final
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2020-10-14 14:57:48 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:55 - Starting SmcIndexApplication on H17NCFFI12P0265 with PID 17776 (C:\Users\yw31830\IdeaProjects\app-subscription-smc\out\production\classes started by yw31830 in C:\Users\yw31830\IdeaProjects\app-subscription-smc)
+2020-10-14 14:57:48 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:651 - No active profile set, falling back to default profiles: default
+2020-10-14 14:57:49 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:127 - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2020-10-14 14:57:49 INFO  [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate:187 - Finished Spring Data repository scanning in 34ms. Found 0 MongoDB repository interfaces.
+2020-10-14 14:57:50 INFO  [main] org.mongodb.driver.cluster:71 - Cluster created with settings {hosts=[maas-gt-p114-m0001.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-sw-p114-m0003.nam.nsroot.net:37017], mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500, requiredReplicaSetName='MGORPST_1909'}
+2020-10-14 14:57:50 INFO  [main] org.mongodb.driver.cluster:71 - Adding discovered server maas-gt-p114-m0001.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:50 INFO  [main] org.mongodb.driver.cluster:71 - Adding discovered server maas-mw-p114-m0001.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:50 INFO  [main] org.mongodb.driver.cluster:71 - Adding discovered server maas-sw-p114-m0003.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.drools.compiler.kie.builder.impl.KieServicesImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.drools.compiler.builder.impl.KnowledgeBuilderFactoryServiceImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.drools.core.io.impl.ResourceFactoryServiceImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.drools.core.marshalling.impl.MarshallerProviderImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.drools.core.concurrent.ExecutorProviderImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.kie.internal.services.KieAssemblersImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.kie.internal.services.KieRuntimesImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.kie.internal.services.KieWeaversImpl
+
+2020-10-14 14:57:51 INFO  [main] org.kie.api.internal.utils.ServiceDiscoveryImpl:139 - Adding Service org.kie.internal.services.KieBeliefsImpl
+
+2020-10-14 14:57:51 INFO  [main] com.gspdata.subscription.smc.index.config.ZookeeperConfig:35 - Start zookeeper configuration on speedlx01d:2181.
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:3, serverValue:1535291}] to maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-gt-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:1, serverValue:39477}] to maas-gt-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-mw-p114-m0001.nam.nsroot.net:37017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=27319800, setName='MGORPST_1909', canonicalAddress=maas-mw-p114-m0001.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=7fffffff000000000000004e, setVersion=9, lastWriteDate=Wed Oct 14 14:57:52 CST 2020, lastUpdateTimeNanos=87583824801800}
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Setting max election id to 7fffffff000000000000004e from replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Setting max set version to 9 from replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Discovered replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-sw-p114-m0003.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:2, serverValue:1777}] to maas-sw-p114-m0003.nam.nsroot.net:37017
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-gt-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-gt-p114-m0001.nam.nsroot.net:37017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40431500, setName='MGORPST_1909', canonicalAddress=maas-gt-p114-m0001.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=null, setVersion=9, lastWriteDate=Wed Oct 14 14:57:52 CST 2020, lastUpdateTimeNanos=87583860027600}
+2020-10-14 14:57:51 INFO  [cluster-ClusterId{value='5f86a16e3554f81ca1e623cb', description='null'}-maas-sw-p114-m0003.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-sw-p114-m0003.nam.nsroot.net:37017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=60960600, setName='MGORPST_1909', canonicalAddress=maas-sw-p114-m0003.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=null, setVersion=9, lastWriteDate=Wed Oct 14 14:57:52 CST 2020, lastUpdateTimeNanos=87583901991200}
+2020-10-14 14:57:51 INFO  [main] org.apache.curator.framework.imps.CuratorFrameworkImpl:304 - Starting
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:zookeeper.version=3.6.0--b4c89dc7f6083829e18fae6e446907ae0b1f22d7, built on 02/25/2020 14:38 GMT
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:host.name=H17NCFFI12P0265.nam.nsroot.net
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:java.version=1.8.0_241
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:java.vendor=Oracle Corporation
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:java.home=C:\Program Files\Java\jdk1.8.0_241\jre
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:java.library.path=C:\Program Files\Java\jdk1.8.0_241\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Cicero Inc\CIC\Bin\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files (x86)\SSH Communications Security\SSH Tectia\SSH Tectia AUX;C:\Program Files (x86)\SSH Communications Security\SSH Tectia\SSH Tectia AUX\Support binaries;C:\Program Files (x86)\SSH Communications Security\SSH Tectia\SSH Tectia Broker;C:\Program Files (x86)\SSH Communications Security\SSH Tectia\SSH Tectia Client;C:\Program Files (x86)\Sennheiser\SoftphoneSDK\;C:\Program Files\Common Files\ThinPrint\;C:\Users\yw31830\AppData\Local\Microsoft\WindowsApps;;.
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:java.io.tmpdir=C:\Users\yw31830\AppData\Local\Temp\
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:java.compiler=<NA>
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:os.name=Windows 10
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:os.arch=amd64
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:os.version=10.0
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:user.name=yw31830
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:user.home=C:\Users\yw31830
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:user.dir=C:\Users\yw31830\IdeaProjects\app-subscription-smc
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:os.memory.free=275MB
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:os.memory.max=3641MB
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:98 - Client environment:os.memory.total=308MB
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ZooKeeper:1005 - Initiating client connection, connectString=speedlx01d:2181 sessionTimeout=300000 watcher=org.apache.curator.ConnectionState@3f50b680
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.common.X509Util:77 - Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ClientCnxnSocket:239 - jute.maxbuffer value is 1048575 Bytes
+2020-10-14 14:57:51 INFO  [main] org.apache.zookeeper.ClientCnxn:1703 - zookeeper.request.timeout value is 0. feature enabled=false
+2020-10-14 14:57:51 INFO  [main] org.apache.curator.framework.imps.CuratorFrameworkImpl:352 - Default schema
+2020-10-14 14:57:51 INFO  [main] com.gspdata.subscription.smc.index.config.ZookeeperConfig:45 - ZooKeeperListener is successfully initialized.
+2020-10-14 14:57:51 INFO  [main-SendThread(speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:1154 - Opening socket connection to server speedlx01d/153.40.81.16:2181.
+2020-10-14 14:57:51 INFO  [main] org.apache.curator.utils.Compatibility:47 - Using org.apache.zookeeper.server.quorum.MultipleAddresses
+2020-10-14 14:57:51 INFO  [main-SendThread(speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:986 - Socket connection established, initiating session, client: /10.61.177.25:53007, server: speedlx01d/153.40.81.16:2181
+2020-10-14 14:57:51 INFO  [main-SendThread(speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:1420 - Session establishment complete on server speedlx01d/153.40.81.16:2181, session id = 0x30018754172e161, negotiated timeout = 40000
+2020-10-14 14:57:51 INFO  [main-EventThread] org.apache.curator.framework.state.ConnectionStateManager:250 - State change: CONNECTED
+2020-10-14 14:57:51 INFO  [main-EventThread] org.apache.curator.framework.imps.EnsembleTracker:201 - New config event received: {server.1=gspdatazk01u:2888:3888:participant, version=0, server.3=gspdatazk03u:2888:3888:participant, server.2=gspdatazk02u:2888:3888:participant}
+2020-10-14 14:57:51 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:61 - Started SmcIndexApplication in 4.261 seconds (JVM running for 5.692)
+2020-10-14 14:57:51 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:60 - GSP Data Subscription SMC Index mapping is running...
+2020-10-14 14:57:51 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:61 - The application version is ${project.version}.
+2020-10-14 14:57:51 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:62 - Starting with parameters: {env=local}
+2020-10-14 14:57:52 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:83 - CheckPointing is enabled
+2020-10-14 14:57:52 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:91 - Set parallelism 1.
+2020-10-14 14:57:52 INFO  [main] com.gspdata.subscription.smc.index.service.KafkaConnectionService:50 - Index source is loaded.
+2020-10-14 14:57:52 INFO  [main] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:4, serverValue:1535292}] to maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:52 INFO  [main] com.gspdata.subscription.smc.index.service.KafkaConnectionService:77 - createSecurityMappingSink, properties: {sasl.mechanism=SCRAM-SHA-256, request.timeout.ms=60000, bootstrap.servers=kafka-ny-ua01.nam.nsroot.net:9092,kafka-ny-ua02.nam.nsroot.net:9092,kafka-ny-ua03.nam.nsroot.net:9092,kafka-ny-ua04.nam.nsroot.net:9092,kafka-ny-ua05.nam.nsroot.net:9092,kafka-ny-ua06.nam.nsroot.net:9092, group.id=gspdata.subscription.smc.index, sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username = "gspdata-service" password = "gspdata-servicepwdUAT";, compression.type=gzip, security.protocol=SASL_PLAINTEXT}
+2020-10-14 14:57:52 WARN  [main] org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer:698 - Property [transaction.timeout.ms] not specified. Setting it to 3600000 ms
+2020-10-14 14:57:53 INFO  [main] com.gspdata.subscription.smc.index.SmcIndexApplication:72 - Execution Plan: {
+  "nodes" : [ {
+    "id" : 1,
+    "type" : "Source: RESPONSE_MESSAGE_SOURCE",
+    "pact" : "Data Source",
+    "contents" : "Source: RESPONSE_MESSAGE_SOURCE",
+    "parallelism" : 1
+  }, {
+    "id" : 2,
+    "type" : "RESPONSE_MESSAGE_PROCESS",
+    "pact" : "Operator",
+    "contents" : "RESPONSE_MESSAGE_PROCESS",
+    "parallelism" : 1,
+    "predecessors" : [ {
+      "id" : 1,
+      "ship_strategy" : "FORWARD",
+      "side" : "second"
+    } ]
+  }, {
+    "id" : 4,
+    "type" : "RESPONSE_MESSAGE_KEYED_PROCESSOR",
+    "pact" : "Operator",
+    "contents" : "RESPONSE_MESSAGE_KEYED_PROCESSOR",
+    "parallelism" : 1,
+    "predecessors" : [ {
+      "id" : 2,
+      "ship_strategy" : "HASH",
+      "side" : "second"
+    } ]
+  }, {
+    "id" : 5,
+    "type" : "SECURITY_MAPPING_PROCESSOR",
+    "pact" : "Operator",
+    "contents" : "SECURITY_MAPPING_PROCESSOR",
+    "parallelism" : 1,
+    "predecessors" : [ {
+      "id" : 4,
+      "ship_strategy" : "FORWARD",
+      "side" : "second"
+    } ]
+  }, {
+    "id" : 6,
+    "type" : "Sink: SECURITY_MAPPING_SINK",
+    "pact" : "Data Sink",
+    "contents" : "Sink: SECURITY_MAPPING_SINK",
+    "parallelism" : 1,
+    "predecessors" : [ {
+      "id" : 5,
+      "ship_strategy" : "FORWARD",
+      "side" : "second"
+    } ]
+  } ]
+}
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils:172 - The configuration option Key: 'taskmanager.cpu.cores' , default: null (fallback keys: []) required for local execution is not set, setting it to its default value 1.7976931348623157E308
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils:172 - The configuration option Key: 'taskmanager.memory.task.heap.size' , default: null (fallback keys: []) required for local execution is not set, setting it to its default value 9223372036854775807 bytes
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils:172 - The configuration option Key: 'taskmanager.memory.task.off-heap.size' , default: 0 bytes (fallback keys: []) required for local execution is not set, setting it to its default value 9223372036854775807 bytes
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils:172 - The configuration option Key: 'taskmanager.memory.network.min' , default: 64 mb (fallback keys: [{key=taskmanager.network.memory.min, isDeprecated=true}]) required for local execution is not set, setting it to its default value 64 mb
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils:172 - The configuration option Key: 'taskmanager.memory.network.max' , default: 1 gb (fallback keys: [{key=taskmanager.network.memory.max, isDeprecated=true}]) required for local execution is not set, setting it to its default value 64 mb
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils:172 - The configuration option Key: 'taskmanager.memory.managed.size' , default: null (fallback keys: [{key=taskmanager.memory.size, isDeprecated=true}]) required for local execution is not set, setting it to its default value 128 mb
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.minicluster.MiniCluster:251 - Starting Flink Mini Cluster
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.minicluster.MiniCluster:260 - Starting Metrics Registry
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.metrics.MetricRegistryImpl:115 - No metrics reporter configured, no metrics will be exposed/reported.
+2020-10-14 14:57:53 INFO  [main] org.apache.flink.runtime.minicluster.MiniCluster:264 - Starting RPC Service(s)
+2020-10-14 14:57:54 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils:247 - Trying to start local actor system
+2020-10-14 14:57:55 INFO  [flink-akka.actor.default-dispatcher-4] akka.event.slf4j.Slf4jLogger:92 - Slf4jLogger started
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils:278 - Actor system started at akka://flink
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils:247 - Trying to start local actor system
+2020-10-14 14:57:55 INFO  [flink-metrics-2] akka.event.slf4j.Slf4jLogger:92 - Slf4jLogger started
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils:278 - Actor system started at akka://flink-metrics
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcService:225 - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at akka://flink-metrics/user/rpc/MetricQueryService .
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.minicluster.MiniCluster:432 - Starting high-availability services
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.blob.BlobServer:143 - Created BLOB server storage directory C:\Users\yw31830\AppData\Local\Temp\blobStore-082bf1b9-bc12-4648-b8d4-de7b505bbbb2
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.blob.BlobServer:207 - Started BLOB server at 0.0.0.0:53009 - max concurrent requests: 50 - max backlog: 1000
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.blob.PermanentBlobCache:107 - Created BLOB cache storage directory C:\Users\yw31830\AppData\Local\Temp\blobStore-d62ccb0e-1e47-4143-834a-6a94d2360d00
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.blob.TransientBlobCache:107 - Created BLOB cache storage directory C:\Users\yw31830\AppData\Local\Temp\blobStore-676ba2ac-adb3-4202-be7d-231c12def55f
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.minicluster.MiniCluster:519 - Starting 1 TaskManger(s)
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskManagerRunner:351 - Starting TaskManager with ResourceID: 3de30b87-434d-4843-b693-65637958cad5
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.taskexecutor.TaskManagerServices:405 - Temporary file directory 'C:\Users\yw31830\AppData\Local\Temp': total 119 GB, usable 32 GB (26.89% usable)
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.io.disk.FileChannelManagerImpl:97 - FileChannelManager uses directory C:\Users\yw31830\AppData\Local\Temp\flink-io-8338de19-75ad-4669-9e71-42bbd1c25d45 for spill files.
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.io.disk.FileChannelManagerImpl:97 - FileChannelManager uses directory C:\Users\yw31830\AppData\Local\Temp\flink-netty-shuffle-1f350ada-bfb8-4aff-80d5-3ae3f6f0c062 for spill files.
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.io.network.buffer.NetworkBufferPool:145 - Allocated 64 MB for network buffer pool (number of memory segments: 2048, bytes per segment: 32768).
+2020-10-14 14:57:55 INFO  [main] org.apache.flink.runtime.io.network.NettyShuffleEnvironment:293 - Starting the network environment and its components.
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.taskexecutor.KvStateService:89 - Starting the kvState service and its components.
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcService:225 - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at akka://flink/user/rpc/taskmanager_0 .
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService:116 - Start job leader service.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.filecache.FileCache:107 - User file cache uses directory C:\Users\yw31830\AppData\Local\Temp\flink-dist-cache-0e25d6a6-23b7-416a-aa84-4d64952bc67a
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint:140 - Starting rest endpoint.
+2020-10-14 14:57:56 WARN  [main] org.apache.flink.runtime.webmonitor.WebMonitorUtils:91 - Log file environment variable 'log.file' is not set.
+2020-10-14 14:57:56 WARN  [main] org.apache.flink.runtime.webmonitor.WebMonitorUtils:97 - JobManager log files are unavailable in the web dashboard. Log file location not found in environment variable 'log.file' or configuration key 'web.log.path'.
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint:116 - Failed to load web based job submission extension. Probable reason: flink-runtime-web is not in the classpath.
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint:236 - Rest endpoint listening at localhost:53036
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:302 - Proposing leadership to contender http://localhost:53036
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-1] org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint:812 - http://localhost:53036 was granted leadership with leaderSessionID=0c0d87d5-0338-4c2d-a26e-a5a800fa5645
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-1] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:252 - Received confirmation of leadership for leader http://localhost:53036 , session=0c0d87d5-0338-4c2d-a26e-a5a800fa5645
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.rpc.akka.AkkaRpcService:225 - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.StandaloneResourceManager at akka://flink/user/rpc/resourcemanager_1 .
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:302 - Proposing leadership to contender LeaderContender: DefaultDispatcherRunner
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:302 - Proposing leadership to contender LeaderContender: StandaloneResourceManager
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.resourcemanager.StandaloneResourceManager:984 - ResourceManager akka://flink/user/rpc/resourcemanager_1 was granted leadership with fencing token be716bfd73096b67aa0bec97da7140f2
+2020-10-14 14:57:56 INFO  [main] org.apache.flink.runtime.minicluster.MiniCluster:372 - Flink Mini Cluster started successfully
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-2] org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess:101 - Start SessionDispatcherLeaderProcess.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl:279 - Starting the SlotManager.
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-5] org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess:120 - Recover all persisted job graphs.
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-5] org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess:128 - Successfully recovered 0 persisted job graphs.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:252 - Received confirmation of leadership for leader akka://flink/user/rpc/resourcemanager_1 , session=aa0bec97-da71-40f2-be71-6bfd73096b67
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.TaskExecutor:1123 - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(be716bfd73096b67aa0bec97da7140f2).
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-5] org.apache.flink.runtime.rpc.akka.AkkaRpcService:225 - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at akka://flink/user/rpc/dispatcher_2 .
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-5] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:252 - Received confirmation of leadership for leader akka://flink/user/rpc/dispatcher_2 , session=c066fb89-045b-4fcb-8a7a-0ef7b317e3a8
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.taskexecutor.TaskExecutor:155 - Resolved ResourceManager address, beginning registration
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.resourcemanager.StandaloneResourceManager:781 - Registering TaskManager with ResourceID 3de30b87-434d-4843-b693-65637958cad5 (akka://flink/user/rpc/taskmanager_0) at ResourceManager
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.taskexecutor.TaskExecutor:84 - Successful registration at resource manager akka://flink/user/rpc/resourcemanager_1 under registration id cd090bca026763e7d845c388891273bc.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.dispatcher.StandaloneDispatcher:275 - Received JobGraph submission 8573d8fa1cb570fe70c4b97ee37458da (Flink Streaming Job).
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.dispatcher.StandaloneDispatcher:332 - Submitting job 8573d8fa1cb570fe70c4b97ee37458da (Flink Streaming Job).
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.rpc.akka.AkkaRpcService:225 - Starting RPC endpoint for org.apache.flink.runtime.jobmaster.JobMaster at akka://flink/user/rpc/jobmanager_3 .
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:248 - Initializing job Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da).
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:80 - Using restart back off time strategy FixedDelayRestartBackoffTimeStrategy(maxNumberRestartAttempts=2147483647, backoffTimeMS=1000) for Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da).
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:202 - Running initialization on master for job Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da).
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:220 - Successfully ran initialization on master in 0 ms.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.scheduler.adapter.DefaultExecutionTopology:111 - Built 1 pipelined regions in 1 ms
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:228 - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:148 - Using failover strategy org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionFailoverStrategy@7607b7a0 for Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da).
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:302 - Proposing leadership to contender akka://flink/user/rpc/jobmanager_3
+2020-10-14 14:57:56 INFO  [mini-cluster-io-thread-11] org.apache.flink.runtime.jobmaster.JobManagerRunnerImpl:304 - JobManager runner for job Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da) was granted leadership with session id 9dcc01ae-547b-4d1b-8cb2-1655ecbb7444 at akka://flink/user/rpc/jobmanager_3.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:758 - Starting execution of job Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da) under job master id 8cb21655ecbb74449dcc01ae547b4d1b.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:171 - Starting scheduling with scheduling strategy [org.apache.flink.runtime.scheduler.strategy.EagerSchedulingStrategy]
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.executiongraph.ExecutionGraph:1240 - Job Flink Streaming Job (8573d8fa1cb570fe70c4b97ee37458da) switched from state CREATED to RUNNING.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.executiongraph.ExecutionGraph:1588 - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) switched from CREATED to SCHEDULED.
+2020-10-14 14:57:56 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.executiongraph.ExecutionGraph:1588 - RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) switched from CREATED to SCHEDULED.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl:372 - Cannot serve slot request, no ResourceManager connected. Adding as pending request [SlotRequestId{f7238ee02010af7c71761da0297e658a}]
+2020-10-14 14:57:57 INFO  [jobmanager-future-thread-1] org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService:252 - Received confirmation of leadership for leader akka://flink/user/rpc/jobmanager_3 , session=9dcc01ae-547b-4d1b-8cb2-1655ecbb7444
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-6] org.apache.flink.runtime.jobmaster.JobMaster:984 - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(be716bfd73096b67aa0bec97da7140f2)
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.jobmaster.JobMaster:155 - Resolved ResourceManager address, beginning registration
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.resourcemanager.StandaloneResourceManager:317 - Registering job manager 8cb21655ecbb74449dcc01ae547b4d1b@akka://flink/user/rpc/jobmanager_3 for job 8573d8fa1cb570fe70c4b97ee37458da.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.resourcemanager.StandaloneResourceManager:727 - Registered job manager 8cb21655ecbb74449dcc01ae547b4d1b@akka://flink/user/rpc/jobmanager_3 for job 8573d8fa1cb570fe70c4b97ee37458da.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.jobmaster.JobMaster:1006 - JobManager successfully registered at ResourceManager, leader id: be716bfd73096b67aa0bec97da7140f2.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl:322 - Requesting new slot [SlotRequestId{f7238ee02010af7c71761da0297e658a}] and profile ResourceProfile{UNKNOWN} from resource manager.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.resourcemanager.StandaloneResourceManager:451 - Request slot with profile ResourceProfile{UNKNOWN} for job 8573d8fa1cb570fe70c4b97ee37458da with allocation id 75b61bd35bb42fa830bc6194fb2acfa9.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.taskexecutor.TaskExecutor:903 - Receive slot request 75b61bd35bb42fa830bc6194fb2acfa9 for job 8573d8fa1cb570fe70c4b97ee37458da from resource manager with leader id be716bfd73096b67aa0bec97da7140f2.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.taskexecutor.TaskExecutor:971 - Allocated slot for 75b61bd35bb42fa830bc6194fb2acfa9.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-4] org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService:172 - Add job 8573d8fa1cb570fe70c4b97ee37458da for job leader monitoring.
+2020-10-14 14:57:57 INFO  [mini-cluster-io-thread-14] org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService:314 - Try to register at job manager akka://flink/user/rpc/jobmanager_3 with leader id 9dcc01ae-547b-4d1b-8cb2-1655ecbb7444.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService:155 - Resolved JobManager address, beginning registration
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService:369 - Successful registration at job manager akka://flink/user/rpc/jobmanager_3 for job 8573d8fa1cb570fe70c4b97ee37458da.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.TaskExecutor:1372 - Establish JobManager connection for job 8573d8fa1cb570fe70c4b97ee37458da.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.TaskExecutor:1271 - Offer reserved slots to the leader of job 8573d8fa1cb570fe70c4b97ee37458da.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.executiongraph.ExecutionGraph:1588 - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) switched from SCHEDULED to DEPLOYING.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.executiongraph.ExecutionGraph:730 - Deploying Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (attempt #0) to 3de30b87-434d-4843-b693-65637958cad5 @ view-localhost (dataPort=-1)
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.executiongraph.ExecutionGraph:1588 - RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) switched from SCHEDULED to DEPLOYING.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-3] org.apache.flink.runtime.executiongraph.ExecutionGraph:730 - Deploying RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (attempt #0) to 3de30b87-434d-4843-b693-65637958cad5 @ view-localhost (dataPort=-1)
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl:332 - Activate slot 75b61bd35bb42fa830bc6194fb2acfa9.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.TaskExecutor:646 - Received task Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1).
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.runtime.taskmanager.Task:968 - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) switched from CREATED to DEPLOYING.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl:332 - Activate slot 75b61bd35bb42fa830bc6194fb2acfa9.
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.runtime.taskmanager.Task:607 - Loading JAR files for task Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) [DEPLOYING].
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.runtime.taskmanager.Task:633 - Registering task at network: Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) [DEPLOYING].
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.TaskExecutor:646 - Received task RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1).
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl:332 - Activate slot 75b61bd35bb42fa830bc6194fb2acfa9.
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.runtime.taskmanager.Task:968 - RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) switched from CREATED to DEPLOYING.
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.runtime.taskmanager.Task:607 - Loading JAR files for task RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) [DEPLOYING].
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.runtime.taskmanager.Task:633 - Registering task at network: RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) [DEPLOYING].
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.streaming.runtime.tasks.StreamTask:228 - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.streaming.runtime.tasks.StreamTask:228 - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.runtime.taskmanager.Task:968 - RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) switched from DEPLOYING to RUNNING.
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.runtime.taskmanager.Task:968 - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) switched from DEPLOYING to RUNNING.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.executiongraph.ExecutionGraph:1588 - RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1) (ed46c4f141a0a770f410c8050c0f59f2) switched from DEPLOYING to RUNNING.
+2020-10-14 14:57:57 INFO  [flink-akka.actor.default-dispatcher-2] org.apache.flink.runtime.executiongraph.ExecutionGraph:1588 - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1) (dd11b1c3055f2ed9c4abaabde0f5a424) switched from DEPLOYING to RUNNING.
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.function.ResponseMessageProcess:42 - ResponseMessageProcess.open() is called with parameters={}, params:org.apache.flink.api.java.utils.ParameterTool@e6d0265
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.config.SpringContextSingleton:30 - init spring context, with parameters:{env=local}
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.streaming.api.functions.sink.TwoPhaseCommitSinkFunction:383 - FlinkKafkaProducer 1/1 - no state to restore
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.kafka.clients.producer.ProducerConfig:347 - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [kafka-ny-ua01.nam.nsroot.net:9092, kafka-ny-ua02.nam.nsroot.net:9092, kafka-ny-ua03.nam.nsroot.net:9092, kafka-ny-ua04.nam.nsroot.net:9092, kafka-ny-ua05.nam.nsroot.net:9092, kafka-ny-ua06.nam.nsroot.net:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = default
+	client.id = producer-1
+	compression.type = gzip
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 60000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = [hidden]
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = SCRAM-SHA-256
+	security.protocol = SASL_PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 3600000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.springframework.boot.SpringApplication:55 - Starting application on H17NCFFI12P0265 with PID 17776 (started by yw31830 in C:\Users\yw31830\IdeaProjects\app-subscription-smc)
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.springframework.boot.SpringApplication:655 - The following profiles are active: local
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.kafka.common.security.authenticator.AbstractLogin:61 - Successfully logged in.
+2020-10-14 14:57:57 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.kafka.clients.producer.ProducerConfig:355 - The configuration 'group.id' was supplied but isn't a known config.
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.kafka.common.utils.AppInfoParser:117 - Kafka version: 2.5.0
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.kafka.common.utils.AppInfoParser:118 - Kafka commitId: 66563e712b0b9f84
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.kafka.common.utils.AppInfoParser:119 - Kafka startTimeMs: 1602658677566
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer:1246 - Starting FlinkKafkaInternalProducer (1/1) to produce into default topic gsp.dataacquisition.reference.public.smcp.mapping.test
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.function.SecurityMappingProcessFunction:37 - SecurityMappingProcessFunction.open() is called with parameters={}, params:org.apache.flink.api.java.utils.ParameterTool@e6d0265
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.config.SpringContextSingleton:30 - init spring context, with parameters:{env=local}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.springframework.boot.SpringApplication:55 - Starting application on H17NCFFI12P0265 with PID 17776 (started by yw31830 in C:\Users\yw31830\IdeaProjects\app-subscription-smc)
+2020-10-14 14:57:57 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.springframework.boot.SpringApplication:655 - The following profiles are active: local
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.springframework.data.repository.config.RepositoryConfigurationDelegate:127 - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2020-10-14 14:57:57 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.springframework.data.repository.config.RepositoryConfigurationDelegate:187 - Finished Spring Data repository scanning in 13ms. Found 0 MongoDB repository interfaces.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.mongodb.driver.cluster:71 - Cluster created with settings {hosts=[maas-gt-p114-m0001.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-sw-p114-m0003.nam.nsroot.net:37017], mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500, requiredReplicaSetName='MGORPST_1909'}
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.mongodb.driver.cluster:71 - Adding discovered server maas-gt-p114-m0001.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.mongodb.driver.cluster:71 - Adding discovered server maas-mw-p114-m0001.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.mongodb.driver.cluster:71 - Adding discovered server maas-sw-p114-m0003.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.config.ZookeeperConfig:35 - Start zookeeper configuration on speedlx01d:2181.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.curator.framework.imps.CuratorFrameworkImpl:304 - Starting
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.zookeeper.ZooKeeper:1005 - Initiating client connection, connectString=speedlx01d:2181 sessionTimeout=300000 watcher=org.apache.curator.ConnectionState@54a2242b
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.zookeeper.ClientCnxnSocket:239 - jute.maxbuffer value is 1048575 Bytes
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.zookeeper.ClientCnxn:1703 - zookeeper.request.timeout value is 0. feature enabled=false
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.curator.framework.imps.CuratorFrameworkImpl:352 - Default schema
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.config.ZookeeperConfig:45 - ZooKeeperListener is successfully initialized.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:1154 - Opening socket connection to server speedlx01d/153.40.81.16:2181.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:986 - Socket connection established, initiating session, client: /10.61.177.25:53046, server: speedlx01d/153.40.81.16:2181
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:6, serverValue:1535293}] to maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.springframework.boot.SpringApplication:61 - Started application in 0.928 seconds (JVM running for 12.007)
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-mw-p114-m0001.nam.nsroot.net:37017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20986800, setName='MGORPST_1909', canonicalAddress=maas-mw-p114-m0001.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=7fffffff000000000000004e, setVersion=9, lastWriteDate=Wed Oct 14 14:57:58 CST 2020, lastUpdateTimeNanos=87590734385600}
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Setting max election id to 7fffffff000000000000004e from replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Setting max set version to 9 from replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Discovered replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:35 - Start to create ResponseSourceRuleEngine.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:1420 - Session establishment complete on server speedlx01d/153.40.81.16:2181, session id = 0x30018754172e162, negotiated timeout = 40000
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)-EventThread] org.apache.curator.framework.state.ConnectionStateManager:250 - State change: CONNECTED
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.springframework.data.repository.config.RepositoryConfigurationDelegate:127 - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.springframework.data.repository.config.RepositoryConfigurationDelegate:187 - Finished Spring Data repository scanning in 13ms. Found 0 MongoDB repository interfaces.
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-gt-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:5, serverValue:39478}] to maas-gt-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-gt-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-gt-p114-m0001.nam.nsroot.net:37017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40093800, setName='MGORPST_1909', canonicalAddress=maas-gt-p114-m0001.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=null, setVersion=9, lastWriteDate=Wed Oct 14 14:57:59 CST 2020, lastUpdateTimeNanos=87590874429400}
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-sw-p114-m0003.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:7, serverValue:1778}] to maas-sw-p114-m0003.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata:280 - [Producer clientId=producer-1] Cluster ID: f43WbCVaRBCBs7XREOzwJA
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cc', description='null'}-maas-sw-p114-m0003.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-sw-p114-m0003.nam.nsroot.net:37017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=41078100, setName='MGORPST_1909', canonicalAddress=maas-sw-p114-m0003.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=null, setVersion=9, lastWriteDate=Wed Oct 14 14:57:59 CST 2020, lastUpdateTimeNanos=87590920261500}
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.mongodb.driver.cluster:71 - Cluster created with settings {hosts=[maas-gt-p114-m0001.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-sw-p114-m0003.nam.nsroot.net:37017], mode=MULTIPLE, requiredClusterType=REPLICA_SET, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500, requiredReplicaSetName='MGORPST_1909'}
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.mongodb.driver.cluster:71 - Adding discovered server maas-gt-p114-m0001.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.mongodb.driver.cluster:71 - Adding discovered server maas-mw-p114-m0001.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.mongodb.driver.cluster:71 - Adding discovered server maas-sw-p114-m0003.nam.nsroot.net:37017 to client view of cluster
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.config.ZookeeperConfig:35 - Start zookeeper configuration on speedlx01d:2181.
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.curator.framework.imps.CuratorFrameworkImpl:304 - Starting
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.zookeeper.ZooKeeper:1005 - Initiating client connection, connectString=speedlx01d:2181 sessionTimeout=300000 watcher=org.apache.curator.ConnectionState@fb82076
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.zookeeper.ClientCnxnSocket:239 - jute.maxbuffer value is 1048575 Bytes
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.zookeeper.ClientCnxn:1703 - zookeeper.request.timeout value is 0. feature enabled=false
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:1154 - Opening socket connection to server speedlx01d/153.40.81.16:2181.
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.curator.framework.imps.CuratorFrameworkImpl:352 - Default schema
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.config.ZookeeperConfig:45 - ZooKeeperListener is successfully initialized.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:8, serverValue:1535294}] to maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:986 - Socket connection established, initiating session, client: /10.61.177.25:53053, server: speedlx01d/153.40.81.16:2181
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.springframework.boot.SpringApplication:61 - Started application in 0.941 seconds (JVM running for 12.32)
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:91 - Start to create SecurityMappingRuleEngine.
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:39 - Data source is loaded. responseMessage
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.mongodb.driver.cluster:71 - No server chosen by com.mongodb.client.internal.MongoClientDelegate$1@421f4807 from cluster description ClusterDescription{type=REPLICA_SET, connectionMode=MULTIPLE, serverDescriptions=[ServerDescription{address=maas-gt-p114-m0001.nam.nsroot.net:37017, type=UNKNOWN, state=CONNECTING}, ServerDescription{address=maas-mw-p114-m0001.nam.nsroot.net:37017, type=UNKNOWN, state=CONNECTING}, ServerDescription{address=maas-sw-p114-m0003.nam.nsroot.net:37017, type=UNKNOWN, state=CONNECTING}]}. Waiting for 30000 ms before timing out
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (speedlx01d:2181)] org.apache.zookeeper.ClientCnxn:1420 - Session establishment complete on server speedlx01d/153.40.81.16:2181, session id = 0x30018754172e163, negotiated timeout = 40000
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)-EventThread] org.apache.curator.framework.state.ConnectionStateManager:250 - State change: CONNECTED
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9009-index-bbpk.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9001-index-cusip.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9999-validate.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9003-index-bcsp.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9002-index-fns.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9004-index-scsp.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9006-index-bbt.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9005-index-isin.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9007-index-otrl.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:48 - load source rule: smc-source-9008-index-sedol.drl
+2020-10-14 14:57:58 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:52 - All source rules for data source: responseMessage have been loaded.
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cd', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:10, serverValue:1535295}] to maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cd', description='null'}-maas-mw-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Discovered replica set primary maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cd', description='null'}-maas-gt-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:9, serverValue:39479}] to maas-gt-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cd', description='null'}-maas-sw-p114-m0003.nam.nsroot.net:37017] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:11, serverValue:1779}] to maas-sw-p114-m0003.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cd', description='null'}-maas-gt-p114-m0001.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-gt-p114-m0001.nam.nsroot.net:37017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=36778400, setName='MGORPST_1909', canonicalAddress=maas-gt-p114-m0001.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=null, setVersion=9, lastWriteDate=Wed Oct 14 14:57:59 CST 2020, lastUpdateTimeNanos=87591210886900}
+2020-10-14 14:57:58 INFO  [cluster-ClusterId{value='5f86a1763554f81ca1e623cd', description='null'}-maas-sw-p114-m0003.nam.nsroot.net:37017] org.mongodb.driver.cluster:71 - Monitor thread successfully connected to server with description ServerDescription{address=maas-sw-p114-m0003.nam.nsroot.net:37017, type=REPLICA_SET_SECONDARY, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 0, 6]}, minWireVersion=0, maxWireVersion=7, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40981900, setName='MGORPST_1909', canonicalAddress=maas-sw-p114-m0003.nam.nsroot.net:37017, hosts=[maas-sw-p114-m0003.nam.nsroot.net:37017, maas-mw-p114-m0001.nam.nsroot.net:37017, maas-gt-p114-m0001.nam.nsroot.net:37017], passives=[], arbiters=[], primary='maas-mw-p114-m0001.nam.nsroot.net:37017', tagSet=TagSet{[]}, electionId=null, setVersion=9, lastWriteDate=Wed Oct 14 14:57:59 CST 2020, lastUpdateTimeNanos=87591244146400}
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.mongodb.driver.connection:71 - Opened connection [connectionId{localValue:12, serverValue:1535296}] to maas-mw-p114-m0001.nam.nsroot.net:37017
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:93 - Data source is loaded. smc
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:102 - load securityMapping rule: smc-securitymapping-8002-isin.drl
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:102 - load securityMapping rule: smc-securitymapping-8001-bbpk.drl
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:102 - load securityMapping rule: smc-securitymapping-8000-sedol.drl
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:102 - load securityMapping rule: smc-securitymapping-8005-cusip.drl
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:102 - load securityMapping rule: smc-securitymapping-8004-scsp.drl
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:102 - load securityMapping rule: smc-securitymapping-8003-fns.drl
+2020-10-14 14:57:58 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:107 - All SecurityMapping rules for data source: smc have been loaded.
+2020-10-14 14:57:58 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-securitymapping-8002-isin.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-securitymapping-8005-cusip.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-securitymapping-8001-bbpk.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-securitymapping-8000-sedol.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-securitymapping-8004-scsp.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-securitymapping-8003-fns.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9002-index-fns.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9004-index-scsp.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9009-index-bbpk.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9008-index-sedol.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9003-index-bcsp.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9001-index-cusip.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9006-index-bbt.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9005-index-isin.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9999-validate.drl' is in folder 'rules' but declares package 'smcp import com.gspdata.subscription.model.GeneralizedMessage import com.alibaba.fastjson.JSON'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:58 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'src/main/resources/rules/smc-source-9007-index-otrl.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-securitymapping-8002-isin.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9003-index-bcsp.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-securitymapping-8005-cusip.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9001-index-cusip.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-securitymapping-8004-scsp.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-securitymapping-8001-bbpk.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-securitymapping-8000-sedol.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-securitymapping-8003-fns.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9006-index-bbt.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9002-index-fns.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9999-validate.drl' is in folder 'rules' but declares package 'smcp import com.gspdata.subscription.model.GeneralizedMessage import com.alibaba.fastjson.JSON'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9008-index-sedol.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9004-index-scsp.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9007-index-otrl.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9009-index-bbpk.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:57:59 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieBuilderImpl:394 - File 'rules/smc-source-9005-index-isin.drl' is in folder 'rules' but declares package 'smcp'. It is advised to have a correspondance between package and folder names.
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.drools.compiler.kie.builder.impl.KieRepositoryImpl:111 - KieModule was added: MemoryKieModule[releaseId=securitymapping:default:1.0.0]
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:81 - ReleaseId is securitymapping:default:1.0.0.
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:83 - the created kieContainer is securitymapping:default:1.0.0.
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.drools.compiler.kie.builder.impl.KieRepositoryImpl:111 - KieModule was added: MemoryKieModule[releaseId=source:default:1.0.0]
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:81 - ReleaseId is source:default:1.0.0.
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:83 - the created kieContainer is source:default:1.0.0.
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:57 - SourceRuleEngine is created.
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.rule.RuleEngineFactory:111 - SecurityMappingRuleEngine is created.
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.function.ResponseMessageProcess:52 - ResponseMessageProcess open success
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase:910 - Consumer subtask 0 has no restore state.
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] org.apache.flink.runtime.state.heap.HeapKeyedStateBackend:140 - Initializing heap keyed state backend with stream factory.
+2020-10-14 14:58:00 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.ConsumerConfig:347 - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [kafka-ny-ua01.nam.nsroot.net:9092, kafka-ny-ua02.nam.nsroot.net:9092, kafka-ny-ua03.nam.nsroot.net:9092, kafka-ny-ua04.nam.nsroot.net:9092, kafka-ny-ua05.nam.nsroot.net:9092, kafka-ny-ua06.nam.nsroot.net:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = gspdata.subscription.smc.index
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = [hidden]
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = SCRAM-SHA-256
+	security.protocol = SASL_PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.function.IndexedKeyedProcessFunction:46 - IndexedKeyedProcessFunction.open() is called
+2020-10-14 14:58:00 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] com.gspdata.subscription.smc.index.function.IndexedKeyedProcessFunction:59 - IndexedKeyedProcessFunction.open() is called, success
+2020-10-14 14:58:01 WARN  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.ConsumerConfig:355 - The configuration 'application.id' was supplied but isn't a known config.
+2020-10-14 14:58:01 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.common.utils.AppInfoParser:117 - Kafka version: 2.5.0
+2020-10-14 14:58:01 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.common.utils.AppInfoParser:118 - Kafka commitId: 66563e712b0b9f84
+2020-10-14 14:58:01 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.common.utils.AppInfoParser:119 - Kafka startTimeMs: 1602658681029
+2020-10-14 14:58:01 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.Metadata:280 - [Consumer clientId=consumer-gspdata.subscription.smc.index-1, groupId=gspdata.subscription.smc.index] Cluster ID: f43WbCVaRBCBs7XREOzwJA
+2020-10-14 14:58:01 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase:643 - Consumer subtask 0 will start reading the following 6 partitions from the earliest offsets: [KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=0}, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=3}, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=4}, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=1}, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=2}, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=5}]
+2020-10-14 14:58:01 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] io.confluent.kafka.serializers.KafkaAvroDeserializerConfig:179 - KafkaAvroDeserializerConfig values: 
+	bearer.auth.token = [hidden]
+	schema.registry.url = [http://gsp-kafka-schema-uat.cloudgsl.nam.nsroot.net:8081]
+	basic.auth.user.info = [hidden]
+	auto.register.schemas = true
+	max.schemas.per.subject = 1000
+	basic.auth.credentials.source = URL
+	schema.registry.basic.auth.user.info = [hidden]
+	bearer.auth.credentials.source = STATIC_TOKEN
+	specific.avro.reader = true
+	value.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+	key.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+
+2020-10-14 14:58:01 INFO  [Legacy Source Thread - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase:729 - Consumer subtask 0 creating fetcher with offsets {KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=0}=-915623761775, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=3}=-915623761775, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=4}=-915623761775, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=1}=-915623761775, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=2}=-915623761775, KafkaTopicPartition{topic='gsp.dataservice.subscription.output', partition=5}=-915623761775}.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.ConsumerConfig:347 - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [kafka-ny-ua01.nam.nsroot.net:9092, kafka-ny-ua02.nam.nsroot.net:9092, kafka-ny-ua03.nam.nsroot.net:9092, kafka-ny-ua04.nam.nsroot.net:9092, kafka-ny-ua05.nam.nsroot.net:9092, kafka-ny-ua06.nam.nsroot.net:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = gspdata.subscription.smc.index
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = [hidden]
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = SCRAM-SHA-256
+	security.protocol = SASL_PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+2020-10-14 14:58:01 WARN  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.ConsumerConfig:355 - The configuration 'application.id' was supplied but isn't a known config.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.common.utils.AppInfoParser:117 - Kafka version: 2.5.0
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.common.utils.AppInfoParser:118 - Kafka commitId: 66563e712b0b9f84
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.common.utils.AppInfoParser:119 - Kafka startTimeMs: 1602658681661
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.KafkaConsumer:1128 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Subscribed to partition(s): gsp.dataservice.subscription.output-0, gsp.dataservice.subscription.output-3, gsp.dataservice.subscription.output-4, gsp.dataservice.subscription.output-1, gsp.dataservice.subscription.output-2, gsp.dataservice.subscription.output-5
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:566 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Seeking to EARLIEST offset of partition gsp.dataservice.subscription.output-0
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.Metadata:280 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Cluster ID: f43WbCVaRBCBs7XREOzwJA
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.AbstractCoordinator:797 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Discovered group coordinator sd-a26d-2b18.nam.nsroot.net:9092 (id: 2147482644 rack: null)
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:1299 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Found no committed offset for partition gsp.dataservice.subscription.output-2
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:1299 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Found no committed offset for partition gsp.dataservice.subscription.output-1
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:1299 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Found no committed offset for partition gsp.dataservice.subscription.output-4
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:1299 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Found no committed offset for partition gsp.dataservice.subscription.output-3
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:1299 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Found no committed offset for partition gsp.dataservice.subscription.output-5
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-2 to offset 453.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-5 to offset 227.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-3 to offset 206.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-0 to offset 189.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-4 to offset 218.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:566 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Seeking to EARLIEST offset of partition gsp.dataservice.subscription.output-3
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-1 to offset 175.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-3 to offset 184.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:566 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Seeking to EARLIEST offset of partition gsp.dataservice.subscription.output-4
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-4 to offset 207.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:566 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Seeking to EARLIEST offset of partition gsp.dataservice.subscription.output-1
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-1 to offset 155.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:566 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Seeking to EARLIEST offset of partition gsp.dataservice.subscription.output-2
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-2 to offset 431.
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:566 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Seeking to EARLIEST offset of partition gsp.dataservice.subscription.output-5
+2020-10-14 14:58:01 INFO  [Kafka Fetcher for Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] org.apache.kafka.clients.consumer.internals.SubscriptionState:383 - [Consumer clientId=consumer-gspdata.subscription.smc.index-2, groupId=gspdata.subscription.smc.index] Resetting offset for partition gsp.dataservice.subscription.output-5 to offset 220.
+
+
+
+
+
+2020-10-14 16:12:32 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] com.gspdata.subscription.smc.index.function.ResponseMessageProcess:42 -
+ ResponseMessageProcess.open() is called with parameters={}, params:org.apache.flink.api.java.utils.ParameterTool@e6d0265, 
+ class com.gspdata.subscription.smc.index.config.SpringContextSingleton
+
+2020-10-14 16:13:59 INFO  [Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)]
+ com.gspdata.subscription.smc.index.function.ResponseMessageProcess:42 - ResponseMessageProcess.open() is called with parameters={},
+ 
+ params:org.apache.flink.api.java.utils.ParameterTool@e6d0265, sun.misc.Launcher$AppClassLoader@18b4aac2
+
+
+
+
+2020-10-14 16:14:17 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] 
+com.gspdata.subscription.smc.index.function.SecurityMappingProcessFunction:37 - SecurityMappingProcessFunction.open() is called with parameters={},
+ params:org.apache.flink.api.java.utils.ParameterTool@e6d0265, sun.misc.Launcher$AppClassLoader@18b4aac2
+
+
+2020-10-14 16:39:35 INFO  [RESPONSE_MESSAGE_KEYED_PROCESSOR -> SECURITY_MAPPING_PROCESSOR -> Sink: SECURITY_MAPPING_SINK (1/1)] .
+com.gspdata.subscription.smc.index.function.SecurityMappingProcessFunction:35 - ---------
+ sun.misc.Launcher$AppClassLoader@18b4aac2, sun.misc.Launcher$AppClassLoader@18b4aac2, sun.misc.Launcher$AppClassLoader@18b4aac2
+
+
+2020-10-14 16:45:12 INFO  [Legacy Source Thread - Source: RESPONSE_MESSAGE_SOURCE -> RESPONSE_MESSAGE_PROCESS (1/1)] 
+com.gspdata.subscription.smc.index.function.ResponseMessageProcess:64 - ------------ 
+sun.misc.Launcher$AppClassLoader@18b4aac2, sun.misc.Launcher$AppClassLoader@18b4aac2, sun.misc.Launcher$AppClassLoader@18b4aac2
+
+
+
+Caused by: java.util.concurrent.TimeoutException: 
+Invocation of public abstract java.util.concurrent.CompletableFuture 
+org.apache.flink.runtime.dispatcher.DispatcherGateway.submitJob(org.apache.flink.runtime.jobgraph.JobGraph,org.apache.flink.api.common.time.Time) timed out.
+	at com.sun.proxy.$Proxy69.submitJob(Unknown Source)
+
+
+ChildFirstClassLoader: 
+1. 先在父级classloader里面找: 可是这个childFirstClassLoader是大家都共享....所以大家都共享.
+2. 如果没找到- 判断需不需要自己加载, 然后去自己/公共 加载.
+2. 如果找到了, 直接用.
+
+
+--? 在哪里找
+
+
+
+
+
+
+
+
+
+

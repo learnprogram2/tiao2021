@@ -1,0 +1,56 @@
+ValueState，这是一种能够为被其封装的变量添加容错能力的类型
+	keyed state， 只能被用于keyed context提供的operator中，
+	
+	
+stateful streaming：
+	1. 提供processFunction
+	2. 注册事件时间, 提供callback.
+
+https://blog.csdn.net/Yl_191919/article/details/100826247
+
+TODO
+1. word count demo
+
+
+
+
+
+#### CheckPointing
+Flink里面所有的operator和function都可以是有状态的(可以看上上小结的workWithState), stateful的function在处理单个的element的时候把data存起来, 来为更多的操作提供buildingBlock.
+为了让state可以容错, 需要checkpoint这些state, 然后就可以恢复state, 并且可以回复到流的处理位置上面.
+##### 1. Prerequisites(前提条件)
+Flink的checkpointing mechanism(机制) 要和durable storage(持久存储)交互来存储state.
+1. 可以重发指定时间的数据的持久dataSource. 可以是MQ或者是FileSystem
+2. state的持久存储, 一般是分布式文件存储系统(distributed filesystem, e.g., HDFS, ...)
+
+##### 2. Checkpointing的开启和配置
+checkpointing默认关闭, 可以调用env的enableCheckpointing(n)方法开启.参数n是checkpointing的间隔(毫秒)
+还有一些配置参数:
+1. exactly-once vs. at-least-once: 确保的级别, 一般用exactly-once就好
+2. checkpoint timeout: 超时之后就会挺掉.
+3. minimum time between checkpoints: 
+4. number of concurrent checkpoint: 默认不允许并行, 这个就是1. 
+5. externalized checkpoints: 定期的外存checkpoints, 外部checkpoints把元数据输出到永久存储, 在jobFail的时候不会自动清除, 如果jobFail的话就用它resume, 可以在Deployment&Operations大章里面介绍操作.
+6. fail/continue task on checkpoint errors: 这个参数来判断一个task的checkpointing的时候如果报错, task是不是要fail .默认就是开启的, 如果关闭task就简单的拒绝checkpointCoordinator的checkpoint要求, 然后就接着run
+7. prefer checkpoint for recovery: 失败重启的时候, 
+
+
+
+
+
+
+发现刚开始的发票提交上午看不清, 我后面又在那个单子的附件里面添加了发票的截图, 但是现在还是会收到邮件.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

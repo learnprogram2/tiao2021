@@ -1,0 +1,2 @@
+savepoint之后的checkpoint是重新做还是接着增量checkpoint?
+	看内容好像是重新做, 因为好大啊, 74G

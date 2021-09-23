@@ -1,0 +1,128 @@
+
+
+#### DataSource
+本文描述DataSourceAPI的概念和背后的架构, 如果想了解dataSource在Flink怎么工作 或者想实现一个dataSource.
+##### 1. DataSource 概念:
+
+**核心Components:** Splits, the SplitEnumerator, SourceReader
+1. Split: 是一部分数据, 比如一个文件, 或者是一个log-partition. splits是原分配工作并行数据读取的粒度.
+2. SourceReader: 是用来读Splits的, 读split所包含的文件. sourceReader运行在SourceOperator的每个并行度里面.
+3. SplitEnumerator: 创建split, 并把它们绑定到SourceReaders上. 在JobManager上单独运行的, 负责维护pending的splits的balance.
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.11/fig/source_components.svg)
+
+**整合Streaming和Batch**
+DataSource支持无界流和batch, in a unified way.
+其实batch和Stream的区别不大, batch下 Enumerator生成固定的splits集合, 每个split的分割是有限的. stream下, 只能固定下splits或者它的size;
+
+**例子:**  下面有一些简单的例子解释这几个component怎么交互:
+	1. 有界的File源: 
+	源有一个URL文件地址去读:
+		1. 一个split就是一个file, 如果文件的格式可以分割, 那就是file的一部分.
+		2. SplitEnumerator 会把所有文件列出俩, 把splits一个一个的assign到请求的reader上, 所有的split都分好了, 接下来的读请求就返回NoMoreSplits. 结束了.
+	2. 无界的	File源:
+	和有界的一样工作, 只是不会把split分配完. 也会周期性的去检查有没有新文件, 检查到了就生成新的splits等着分配.
+	3. Unbounded Stream KafkaSource:
+	从kafka上读:
+		1. 一个KafkaPartition就是一个Split
+		2. SplitEnumerator把所有topic的所有partition列出来. 也会检查有没有增加.
+		3. SourceReader从分配到Splits(topicPartition), 使用Consumer读.
+	4. Bounded Kafka Source:
+	和无界的kafka一样, 除了, 每个split定一个了endOffset. 一旦SourceReader读到了Split的endOffset就关闭了.
+
+
+##### 2. DataSource API:
+**Source:**
+SourceAPI是工厂模式, 创建四个component: SplitEnumerator, SourceReader, SplitSerializer, EnumeratorCheckpointSerializer.
+除了上面四个, Source也提供了source的boundedness属性, 让Flink选择合适的mode来run这个job.
+Source的实现应该实现Serializable接口, 因为Source实例在Flink运行的时候会被序列化和上传到Flink里.
+
+**SplitEnumerator:**
+SplitEnumerator是Source的心脏, 实现者应该实现功能:
+	1. 处理SourceReader的注册
+	2. 处理SourceReader的失败后调用的方法addSplitsBack(). 在回调的时候要实现coordination.
+	3. 要实现split的discover和assignment.
+SplitEnumerator实现上面三个功能可以借助SplitEnumeratorContext的帮助, context在SplitEnumerator创建/restore的时候提供(自己source实现), 它可以帮助Enumerator存必要的readers信息等. 
+SplitEnumeratorContext有callAsync()方法, 可以handle一些splitEnumerator的维护readers信息刷新啊什么的工作.
+(这里给了个刷新的代码)
+
+**SourceReader: **
+SourceReader在TaskManager上消费Split里面的数据. 提供了pull-based消费接口, Flink会不断地调用pollNext(ReaderOutput)从SourceReader里读. 返回的结果会有SourceReader的一些状态:
+	1. MORE_AVALIABLE: 有可以立即拿到的records
+	2. NOTHING_AVALIABLE: 还有数据, 但现在没有.
+	3. END_OF_INPUT: reader读完了所有的数据, 该关闭了. 
+调用一次pollNext, 可以在ReaderOutput放多个, 但尽量避免. 因为是loop调用的, 不能阻塞.
+SourceReader的state应该在SourceSplits里面维系着, 在snapshotState()的时候会调用. 这样做可以让SourceSplits被assigned到其他的reader.
+SourceReaderContext 也会在Reader创建的时候弄出来, Source应该把context传给Reader. sourceReader可以通过context发送SourceEvent给SplitEnumerator, Source的设计模式就是让SourceReader可以把本地的inxi报告给splitEnumber来统筹全局.
+SourceReaderAPI是底层API, 允许我们手动的处理splits, 可以有自己的线程模型去featch处理数据. Flink提供了SourceReaderBase.class给我们更方便的处理, 不要从头写.
+
+**怎么用Source:**
+把source放到env里面就拿到DataSource了, env就会loop调用我们的pollNext();
+
+##### 3. Split Reader API
+SourceReader API是异步的, 需要手动异步的读取split. 但事实上, 大多数的Source会使用block的操作, 比如调用kafkaConsumer的poll()就会, 调用HDFS的IO操作也会阻塞. 为了和异步的SourceAPI兼容, 同步的操作应该用reader里的异步线程做.
+SplitReader是high-leve的API, 集合了简单的同步reading/polling-based Source实现(fileReading, kafka...)
+核心是上面提到的SourceReaderBased.class, 他给我们splitReader, 创建fetcher线程, 支持不同的消费线程模型.
+
+**SplitReader**
+只有三个方法: block的fetch方法, non-blocking的处理split变动的方法, 不阻塞的唤醒阻塞中的fetch操作.
+splitReader只用关注怎么从外部的split里面读出数据来就好了.
+
+**SourceReaderBase**
+SourceReader的实现都会做几个事情, Base.class就把这些操作封装起来了. 
+	1. 从split里面fetch数据需要的线程池.
+	2. 解决fetching线程和其他的方法调用(pollNext)之间的同步.
+	3. 处理split的watermark对齐.
+	4. 处理split的state 用来checkpoint.
+
+**SplitFetcherManager**
+SourceReaderBase支持几个开箱即用的线程模型, 取决于SplitFetcherManager怎么做的. SplitFetcherManager创建维护一个splitFetcher的池子. 也要管理怎么把split assign到splitReader上面
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.11/fig/source_reader.svg)
+(这里给了一个管理着固定的SplitFetcher的manager, 按照hashCode把split分给splitFetcher)
+SourceReader会使用这个Manager来从split里面featch.
+
+
+##### 4. Event Time 和 Watermarks
+Source里面需要做一些Event Time assignment 和 Watermark Generation的工作, event stream给sourceReader eventTimestamp 并且包含watermark.
+注意: 旧版的应用通过单独的一步来生成time stamps和watermark 通过stream.assignTimestampsAndWatermarks. 我们现在不能用这个方法了.
+
+**API**
+WatermarkStrategy 通过env.fromSOurce()方法加进去, 会创建TimestampAssigner和WatermarkGenerator.
+这两个在ReaderOutput里面run, 所以source是先不用实现timestamp和watermark的逻辑
+
+**Event Timestamps**
+两步走:
+	1. SourceReader 调用SOurceOutput.collect把sourceRecord的timestamp追加到event里, ()就可以. 一般用在record-based并且有timestamp的源(比如Kafka...).
+		其他的source没有sourceRecord的timestamp.
+	2. TimestampAssigner分配队中的timestamp, 它拿到原始的sourceRecordTimestamp和event, 可以用sourceRecord的时间戳, 或者拿到event里面保存的事件.
+通过两部允许用户可以拿到两个时间戳. 如果不带源时间戳的source(比如说文件) 并且选择源record的时间戳作为最终的eventTimestamp, event会有一个默认的时间戳(LONG.MIN)
+emmmm....没太理解
+
+**Watermark Generation**
+只有在stream执行的时候watermarkGenerator才会工作. batch处理停用water mark Generator. 
+dataSource API 支持在每个split里面运行watermarkGenerator, 这个可以让Flink拿到每个split里面的处理进度. 然后可以更好的处理不同spliteventTime的偏差, 然后防止空闲的split会holding整个应用的eventtime进度.
+(会出现这种情况么??, hold了延迟了一段时间不就过去了?还是watermark机制不太清)
+![](https://ci.apache.org/projects/flink/flink-docs-release-1.11/fig/per_split_watermarks.svg)
+使用SplitReaderAPI会自动地handle watermark. 开箱即用.
+底层的SourceReaderAPI做实现的时候, 可以使用split-aware watermark generation, 必须把每个splits的event输出到不同的output: Split-local SourceOutputs. split-localOutput可以在输出的时候调用ReaderOutput.createOutputForSplit(splitID)创建, releaseOutputForSplit(splitId)发送.(看APIDoc)
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+["MinStack","push","push","push","push","pop","min","pop","min","pop","min"]
+[[],[512],[-1024],[-1024],[512],         [512],[1024],[-1024],[-1024],[],[512]]
+
+
+Exception in thread "main" org.apache.flink.configuration.IllegalConfigurationException: 
+The configured Total Process Memory size (3.000gb (3221225472 bytes)) is less than the sum of the derived Total Flink Memory size (4.000gb (4294967296 bytes)) 
+and the configured or default JVM Metaspace size  (256.000mb (268435456 bytes)).
+
+
+
+# jobmanager 配置: 
+Total Flink memory		jobmanager.memory.flink.size	0.75G
+Total process memory	jobmanager.memory.process.size	1.25G
+# jobmanager 日志里面自动分配更细微的
+2020-10-20 05:48:02,052 [main] INFO  org.apache.flink.configuration.GlobalConfiguration - Loading configuration property: jobmanager.rpc.address, 10.57.19.47
+2020-10-20 05:48:02,146 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils - Final Master Memory configuration:
+2020-10-20 05:48:02,147 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -   Total Process Memory: 2.000gb (2147483648 bytes)
+2020-10-20 05:48:02,148 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -     Total Flink Memory: 1.250gb (1342177280 bytes)
+2020-10-20 05:48:02,148 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -       JVM Heap:         1.125gb (1207959552 bytes)
+2020-10-20 05:48:02,149 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -       Off-heap:         128.000mb (134217728 bytes)
+2020-10-20 05:48:02,150 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -     JVM Metaspace:      256.000mb (268435456 bytes)
+2020-10-20 05:48:02,150 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -     JVM Overhead:       512.000mb (536870912 bytes)
+
+# taskmanager 配置
+
+
+2020-10-20 06:48:59,384 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils - Final TaskExecutor Memory configuration:
+2020-10-20 06:48:59,390 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -   Total Process Memory:          4.000gb (4294967296 bytes)
+2020-10-20 06:48:59,391 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -     Total Flink Memory:          3.000gb (3221225472 bytes)
+2020-10-20 06:48:59,391 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -       Total JVM Heap Memory:     179.200mb (187904776 bytes)
+2020-10-20 06:48:59,392 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -         Framework:               128.000mb (134217728 bytes)
+2020-10-20 06:48:59,392 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -         Task:                    51.200mb (53687048 bytes)
+2020-10-20 06:48:59,393 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -       Total Off-heap Memory:     2.825gb (3033320696 bytes)
+2020-10-20 06:48:59,393 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -         Managed:                 2.400gb (2576980416 bytes)
+2020-10-20 06:48:59,394 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -         Total JVM Direct Memory: 435.200mb (456340280 bytes)
+2020-10-20 06:48:59,394 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -           Framework:             128.000mb (134217728 bytes)
+2020-10-20 06:48:59,433 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -           Task:                  0 bytes
+2020-10-20 06:48:59,434 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -           Network:               307.200mb (322122552 bytes)
+2020-10-20 06:48:59,435 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -     JVM Metaspace:               256.000mb (268435456 bytes)
+2020-10-20 06:48:59,435 [main] INFO  org.apache.flink.runtime.util.bash.BashJavaUtils -     JVM Overhead:                768.000mb (805306368 bytes)
+BASH_JAVA_UTILS_EXEC_RESULT:-Xmx187904776 -Xms187904776 -XX:MaxDirectMemorySize=456340280 -XX:MaxMetaspaceSize=268435456
+
+
+
+
+
+
+
+

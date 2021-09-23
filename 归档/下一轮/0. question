@@ -1,0 +1,39 @@
+Note   - Java项目的打包, 怎么运行起来的?
+1. jar 包是怎么运行起来的.
+	MANIFEST.MF中指定main方法.
+2. war 包是怎么运行起来的
+	war包放在tomcat里的webapps目录下, servlet容器会扫描注册web.xml中的servlet哦~
+3. war包打包, 不用web.xml的servlet3, https://www.cnkirito.moe/servlet-explore/
+4. jar包和war包
+	war是一个web模块，其中需要包括WEB-INF，是可以直接运行的WEB模块。而jar一般只是包括一些class文件，在声明了Main_class之后是可以用java命令运行的.
+	jar包：通常是开发时要引用通用类，打成包便于存放管理。
+	tar只打包，不压缩
+4. dubbo 是怎么打成war包的? spring单体项目怎么达成war包的?
+	???
+5. jar包的mainclass没有main方法.
+	???
+6. jar包内容详解: https://juejin.im/post/5d16cc8cf265da1b8d163237
+	打jar包, 使用jar命令, 指定入口类, 然后就好了.
+	普通的 JAR 解压之后的文件目录
+		.
+		├── META-INF
+		│   ├── LICENSE.txt
+		│   ├── MANIFEST.MF
+		│   ├── NOTICE.txt
+		│   ├── maven
+		│   │   └── com.alibaba
+		│   │       └── fastjson
+		│   │           ├── pom.properties
+		│   │           └── pom.xml
+		│   └── services
+		│       ├── javax.ws.rs.ext.MessageBodyReader
+		│       ├── javax.ws.rs.ext.MessageBodyWriter
+		│       ├── javax.ws.rs.ext.Providers
+		│       └── org.glassfish.jersey.internal.spi.AutoDiscoverable
+		└── com
+			└── alibaba
+				└── fastjson
+					├── JSON.class
+					├── JSONObject.class
+					....省略
+
