@@ -3,6 +3,9 @@ sf-f.1 内部的图集第二季
 
 知识
 1. java guide看一遍.
+    1. 多种数据结构, 在存储中的应用: B-tree, B+tree, Hash, LSM
+    2. MySQL的mvcc新理解
+    3. redis三种缓存策略
 sf.19. HDFS, ES之类的概括知识     -
 
 JL:
