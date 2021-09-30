@@ -9,7 +9,15 @@ sf-f.1 内部的图集第二季
 sf.19. HDFS, ES之类的概括知识     -
 
 JL:
-1. 修改整理
+1. Github项目总结:
+    《后端架构师技术图谱》, <interview_internal_reference>
+    https://hollischuang.github.io/toBeTopJavaer/#/menu
+    https://www.cyc2018.xyz/
+
+2. 模拟PDF
+
+3. 修改整理 JL
+
 
 TODO
 4. 经验整理:
