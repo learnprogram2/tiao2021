@@ -97,15 +97,58 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
     很难, 因为挪到了内存里面.
     循环创建class对象可能可以. Metaspace的空间占用达到了设定的最大值就会fullGC.
 
+11. JVM优化? 优化点有哪些? 如何考虑?
 
 
+12. Tomcat非阻塞协议和阻塞协议的区别
 
+13. Nio的底层原理? 系统epoll是如何实现的?
+    Nio底层依赖操作系统的多路复用IO实现, 多路复用属于同步阻塞IO, 内核同步响应数据, 进程阻塞收取, 但是多路复用可以极大提高收发包效率.
+    操作系统有5中IO模型:
+        1. 阻塞IO: 单个文件要一个线程, 阻塞同步拿数据.
+        2. 非阻塞IO: 单线程要轮询拿取, 同步非阻塞.
+        3. 多路复用: 内核同步读写, 阻塞拿去, 但是一个selector维护多个文件.
+            实现: select, poll, epoll.
+                select有fd大小限制, poll链表实现突破限制. epoll在fd就绪时候会到一个就绪链表里, 避免遍历所有fd.
+                网卡写入数据帧, 硬中断cpu, cpu软中断使用内核线程收数据, 然后解析TCP, 查找socket, 唤醒socket的等待队列函数, 就是epoll函数
+                epoll函数把socket放在epoll的就绪队列里, selector遍历时候就会被唤醒.
+        4. 信号驱动IO
+        5. 异步IO: 异步回调.
 
+14. Nio是边缘触发还是水平触发?
+    Java Nio水平触发: 只要满足, 不断地触发时间
+    水平触发: level-trigger, 信号只需要满足条件, 就一直会触发.
+        epoll是以缓冲区空满状态来判断水平触发条件. 如果缓冲区有数据, 就一直触发读事件. 只要缓冲区还不满, 就一直触发写事件.
+    边缘触发: edge-trigger, 当状态边缘变化时候触发一个事件.
+        Linux的epoll也支持边缘触发, 在文件就绪时候, 会叫醒epoll的selector
 
+15. Nio的epoll实现, 如何打断一个select()方法?
+    wakeup()
 
+16. 什么场景下使用DirectBuffer? 使用Heap去进行IO读写时, 为什么申请临时的DirectBuffer进行数据拷贝?
+    需要和内核打交道的时候, 使用DirectBuffer会减少一次内存拷贝. HeapBuffer要多做一次, 而且增加GC压力.
 
+17. Nio的零拷贝如何实现?
+    JavaNino零拷贝, fileChannel的的transferTo()基于sendfile实现, mmap适合小数据量读写, 直接在内核操作.
+    sendfile还可以利用DMA来优化, 减少拷贝次数.
 
+18. 单例模式double check时候的volatile的作用是?
+    防止指令重排, 因为在synchronized里面还是会发生指令重排的.
+    volatile加入loadstore写屏障, 实现了有序性. 可见性也保证了.
 
+19. 讲一下synchronized锁升级?
+    早期的synchronized都是重量锁.
+    1. 偏向锁:
+    2. 轻量级锁:
+    3. 自旋优化:
+    4. 重量级锁:
+
+20. synchronized保证可见性:
+    monitorenter, 集成了内存屏障.
+    load(refresh), store(flush) 内存屏障, 拿到最新数据
+    acquire, release屏障禁止读/写和读写重排
+
+21. 并发编程时, wait()调用要放在while()循环里?  什么情况会造成假唤醒?
 
 
 
