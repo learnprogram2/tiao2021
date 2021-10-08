@@ -149,12 +149,95 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
     acquire, release屏障禁止读/写和读写重排
 
 21. 并发编程时, wait()调用要放在while()循环里?  什么情况会造成假唤醒?
+        while (product >=1) {
+            try {
+                this.wait();
+            }
+        }
+        while 保证唤醒之后, 如果不满足条件还会睡过去. 避免假唤醒.
+        假唤醒就是醒来发现, 没有满足条件, 白干活, 如果没处理还会造成数据不一致.
+
+22. HashMap如何解决Hash冲突?
+    首先 hashMap对hash算法进行散列, 使用前后16位的亦或来分散.
+    如果hashMap的hash冲突, 会用单向链表, 避免扩容使用头插法死循环, 换用拆分链表.
 
 
+### 微服务
+1. 你们的系统如何设计, 为什么要重构为微服务架构?
+    系统最初就是javaWeb项目的三层架构: UI层(MVC), 业务层(Service), 数据库层(DAO)
+    spring-MVC, spring, MyBatis技术栈开发.
+    但单体项目开发到后面太复杂了, 不能满足敏捷开发, 多个人业务分工, 还有业务的单独需求(有的需要高并发, 有的没必要).
+    就进行业务拆分, 拆分成多个子服务, 通过RPC框架联合成有机的一个微服务架构. 并在多个部门之间通过分布式中间件, 搭建起庞大的微服务生态系统, 满足业务需求.
+    所以主要是 为了突破单体项目局限, 满足多团队敏捷开发, 和多业务的需求.
 
+2. 微服务框架用的是什么? 为什么选择这个?
+    我们用的spring-cloud, 主要是生态比较好, 除了基础的RPC功能外, 还有最初的netflix体系, 整合了微服务里面的负载均衡, 注解式调用, 限流熔断, 注册发现等内容.
+    dubbo作为一个分布式服务框架, 需要自己定制很多, 所以以后有转spring-cloud-alibaba体系.
+    因为微服务主要是开发业务的, 其他各种功能主要考虑方便和可靠的均衡, 如果是单纯的rpc调用的话, 用grpc比较好, 比如我们之前的文件存储系统和注册中心系统, 都是通过grpc互相调用的, ProtoBuf序列化协议比较快.
+        事实上eureka用的是一个restful的框架jerssy, 适合就好. 方便, 功能合适.
+    dubbo vs spring-cloud: Dubbo 是 SOA(service oriented architecture) 时代的产物, 它的关注点主要在于服务调用, 流量分发, 流量监控和熔断.
+        Spring Cloud 诞生于微服务架构时代, 考虑的是微服务治理的方方面面, 另外由于依托Spring, Spring Boot 的优势之上, Dubbo 定位服务治理 属于 Spring Cloud 生态体系里面
 
+    单片架构类似于大容器，其中应用程序的所有软件组件组装在一起并紧密封装。
+    一个面向服务的架构是一种相互通信服务的集合。通信可以涉及简单的数据传递，也可以涉及两个或多个协调某些活动的服务。
+    微服务架构是一种架构风格，它将应用程序构建为以业务域为模型的小型自治服务集合。
 
+3. 服务化之后, 会遇到什么样的问题? 解决方案是什么?
+    微服务架构主要遇到的是共享数据的问题.
+    1. 技术门槛高, 复杂性增加: 服务描述, 注册中心, 服务框架, 服务监控, 服务追踪, 服务治理等几大基本组件
+    2. RPC 依赖网络IO调用的不确定性: 限流, 降级, 熔断.
+    3. 分布式共享数据的一致性问题: 分布式事务, 分布式锁.
+    4. 服务治理, 依赖的传递性: spring-cloud-admin-portal 治理.
 
+4. 你们的系统中, 限流熔断组件时用的是什么? 网关用的是什么? 说一下请求流程?
+    用的Hystrix小刺猬, 他是circubreaker+workPool的实现
+    网关用的zuul, 就是web容器的filter实现, 加上了eureka+hystrix+ribbon把流量均衡的接入微服务.
+
+5. Hystrix是如何限流的?
+    1. hystrix通过ribbon的springContext接入到每个服务之中
+    2. 对于每个serviceId, hystrix设置了一个group配置, 配置了workpool的大小, 是并行度上限.
+    3. 对于每个请求, 包装在一个HystrixCommand里面, 使用observer流式编程, 包装了一个执行链条.
+    4. hystrixCommand放到workPool里面执行, 就起到了限流的作用, 执行链条相关的每一个serviceId有一个circuitBreaker, 起到熔断,
+        执行链条内包装了降级的执行.
+
+6. Eureka多级缓存导致的时效差?
+    Eureka里面查询有一个两级缓存, 包装了每一个key的响应. EurekaPeer之间同步, 有一个三级缓存队列, 包装多个request成一个package.
+    1. 第一层读写缓存其实是和registry同步的, 没有时差, 每次registry修改后都会失效这层缓存, 用的是google的一个工具Map.
+    2. 第二层缓存对每一个key有一个30s的过期缓存, 所以查询里缓存导致的时差主要是这30s.
+    3. peer同步的package打包三级缓存, 主要是队列, 有package的request条数和过期时间的限制, 应该是500ms一个batch.
+
+7. spring-cloud-netflix有些功能比较老, 为什么不用spring-cloud-alibaba?
+    稳定, netflix退出之后, 也更倾向于用spring-cloud官方的组件: https://i0.hdslb.com/bfs/article/ed3f92808d9fde1b1de5e126c6d8fb02bb7841ee.png@942w_539h_progressive.webp
+    service-discovery, circuitBreaker, openFeign, gateway, loadBalancer.
+
+8. netflix 对比 alibaba有哪些区别?
+    区别就是组件不一样.
+
+9. nacos和eureka相比有什么不同?
+    Eureka是侧重于ap的注册中心, 没有严格保证一致性, 通过过期时间+心跳+peer同步(最新覆盖最老的)来保证最终一致性
+    Nacos=注册中心+配置中心, 结合了MySQL实现了CP和AP
+
+10. sentinel如何持久化降级策略的?
+11. Sentinel的工作原理? 动态限流如何实现的? 和hystrix对比?
+
+12. spring-cloud的微服务, 有灰度发布么? 平时是怎么发布的?
+    可以通过zuul网关的转发策略, 来实现灰度发布, eureka的metamata里面配置服务的键值对.
+    版本发布:
+        1. 优雅关闭:
+            1. actuator的shutdown命令, 取消注册, JDK的shutdownHook, 直接kill-15容器.
+                都是向jvm发出shutdown命令\
+            2. spring注册shutdownHook, 注册一个监听器线程, 满足条件时执行doClose方法, 关闭spring, jvm就关闭了.
+
+13. Feign的执行过程? 为什么默认参数有问题?
+    执行过程:
+        1. 嵌入Spring-Boot体系: 为每一个serviceId配置一个springContext, 里面配置这feignClient的配置参数.
+        2. spring启动: 扫描@FeignClient注解, 通过配置的serviceId的spring配置, 为每一个接口生成一个动态代理InvocationHandler.
+        3. 在执行调用的时候, 请求通过对应的动态代理, 通过spring里面为serviceId配置的Ribbon的ILoadBalacener, 里面包装了zoneAwareEurekaClient, 可以拿到目标地址
+        4. ribbon的encoder和decoder, 包装好请求, 最后通过HttpClient发出去, 接收.
+    默认参数:
+        超时时间太短, 默认懒加载, 初次调用都会启动一个spring, 可能会超时.
+
+14. 线上微服务部署, 一台机器负载过高, 如何处理?
 
 
 
