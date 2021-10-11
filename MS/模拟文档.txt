@@ -427,16 +427,33 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
 1. 消息队列适用场景有哪些? 如何做技术选型?
     任何对及时性要求不高的, 对
 
-2. 如何保证消息不丢失何不重复消费?
-
+2. 如何保证消息不丢失和不重复消费?
+    不丢失:
+        生产者: 本地事务配合MQ的ack机制, 来保证生产消息的不丢失
+        MQ: kafka通过副本+ack来保证消息不丢失, 但是全宕机还是不能保证fsync到磁盘.
+        消费者: 本地事务配合ack机制, 保证必须消费.
+    不重复消费:
+        首先是生产者不重复生产, 没有办法保证
+        MQ不重复存储: 一般都不会, 因为按照log文件存储的.
+        消费不重复: 要配合MQ实现分布式事务, 手动提交offset, 最好消费时候保证幂等性.
 
 3. 你使用MQ的业务场景是什么?
-
+    消费通知
+    数据传输
+    数据短期版本存储
 
 4. RocketMQ的架构能说一下么? RocketMQ的顺序性如何保证?
+    RocketMQ类似Kafka, 不同之处是, 同一个broker的所有partition共用一个CommitLog, partition只维护offset就好了.
+    这个设计的很简单, 省了很多事情, 但是可扩展性麻烦了很多.
+    同时RocketMQ的功能比较多, 实现了可靠消息服务, 死信队列, 延时队列等.
 
 
 5. Kafka架构能说一下么? kafka的顺序性如何保证?
+    主要分成
+        Producer架构: 分partition缓存 + batch包 + nio通讯
+        Broker存储架构: reactor网络模型 + partition分片 + mmap&oscache优化 +  leo&HW保证
+        Broker cluster架构: zk参与 + isr维护 + cluster leader分配管理 + rebalance
+        Consumer消费架构: cooperator协调
 
 
 6. 如何去设计一个消息中间件?
@@ -445,23 +462,39 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
 
 7. 平时使用消息中间件时, 要考虑什么问题? 事务消息如何设计?
     保证消息发送/消费的可靠性, 不要漏掉, 异常要好好展示出来.
+    事务消息-异构事务:
+        1. 拆分两个单独事务, 外加一个发送消息表, 使用DB的状态流转, 保证MQ重复发送成功
+        2. MQ的事务 TCC
 
 
 8. MY集群如何部署? 什么配置? QPS多少? 有没有出现消息积压?
     部署集群: Kafka的4台机器, 32核64G
     消息积压: 有, 但平时会重新消费, 会提供一段时间的过时数据.
+            一般是消费时候检查timestamp, 然后通过自定义的Prometheus的metrics暴露出去Lag.
+            如果业务需要, 会做降级处理.
 
 9. 消息挤压后如何排查? 如何解决积压?
+    排查Consumer端: Dump机器状态, 排查机器运行状态
+    如果没问题, 可能就是流量太大了.
+
+    解决积压:
+        1. 事前要做好压测:
+        2. 根据业务, 进行节流(扔掉) 或者蓄洪(存储msg).
+        3. 可动态部署服务, 增加consumer, 调整partition, 均匀化key.
 
 
 10. RocketMQ的延时消息如何自定义延时时间?
+    通过多队列, 间隔的延时.
 
 
 11. Kafka可以使用延时消息么?
-    好像不提供, 但是可以模拟RocketMQ的多队列模式.??
+    好像不提供, 但是可以模拟RocketMQ的多队列模式.
+    可以自实现服务, 模仿Kafka的时间轮, 来做.
 
 
 12. Kafka Consumer端如何去消费消息? 什么时候触发rebalance?
+    TODO
+    consumer group变化的时候.
 
 
 13. Kafka副本之间如何同步消息?
@@ -474,39 +507,65 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
 1. 常用的Redis存储结构有哪些? 说一下zset数据结构是什么?
     5种数据类型: (string, set, zset, list, hash)
     存储结构: 每种数据类型都不只有一种存储结构, 可以在代码的命令里面看一下具体用的什么存储结构
-        1. string: 存储long直接用obj头, sds,
-        2. set: 压缩列表, ?
+        1. string: 存储long直接用obj头, embStr, 和普通的头+sds,
+        2. set: intset数组, 字典
         3. zset: 压缩列表, 跳表
-        4. list: 压缩列表, ?
-        4. hash: 压缩列表, 字典
+        4. list: quickList(包装多个ziplist, 组成前后链表)
+        4. hash: 压缩列表, 字典(两个table互换)
 
 2. Redis数据备份如何做的?
+    AOF, AOF重写
+    RDB
+    混合
+
 
 
 3. Redis集群挂掉, 如何应对, 如何监控Redis集群健康?
+    集群挂掉应对:
+
+    监控Redis:
+        1. redis exporter 整合prometheus
+        2. info命令查看redis运行状态.
 
 4. Redis cluster hash槽的概念?
+    一致性hash算法的一种实现, 9位,
 
 5. Redis Cluster节点之间的通讯机制?
     gossip协议
 
 6. RedisCluster从节点选举流程是如何进行的?
+    Gossip协议对从节点的稳定性进行评分, 选举一个
 
 7. Redis默认的回收算法是什么? 如何理解?
+    七种, 默认不淘汰, 报错.
 
 8. Redis缓存一致性里的 cache aside pattern模式的意义是什么?
+    只读缓存, 更新删除. 意义就是保证缓存的一致性. 先缓存后DB, 先DB后缓存, 延迟双删
+    读写缓存: 用事务+lua实现.
+    异步MQ回写缓存:
+    binLog更新缓存: 单独的mysql, 代价大
+    MySQL+Redis异构事务: 缓存的意义和地位.
+
+
 
 9. Redis高并发情况就下如何解决缓存一致性的问题? 还能用cache-aside-pattern模式么?
+    不建议: 因为高并发情况下可能造成缓存击穿, 数据不一致问题.
+    可以用读写缓存, 或者任务队列异步回写缓存.
 
 10. redis高并发情况下缓存一致性解决方案有哪些?
+    九十三种, 缓存一致性里面的三种缓存模式
 
 11. redis高并发, 异步串行化解决缓存一致性方案需要注意什么问题?
-
+    1. 只适用于单个key的缓存更新.
+    2. 保证内存队列的可靠性, 长度.
 
 12. redis如何部署的? 多级缓存下, 缓存一致性问题如何解决?
-
+    多级缓存:
+        1. 缓存一致性三种方案
+        2. 缓存过期
 
 13. 你们项目里缓存里存储什么数据? 数据量有多少?
+    mapping: 5亿条数据, 30G
 
 14. 使用缓存需要注意的问题有哪些?
     首先是数据一致性问题
@@ -514,9 +573,21 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
     最后是缓存的HA, 降级方案
 
 15. 为什么会存在BigKey问题? 如何定义一个key是BigKey?
+    内存空间不均匀
+    redis处理阻塞
+    网络阻塞: 千兆网卡顶不住
 
+    发现BigKey: redis-cli --bigkeys
+        1. scan: 主动发现
+        2. 被动就是打印
+    根据业务定义BigKey, 监控Redis性能.
 
 16. 多层缓存架构师如何设计的? 多层缓存架构需要注意什么?
+    从数据处理流程链条考虑:
+        1. CDN之类的
+        2. 应用内: 应用层nginx缓存, 分布式redis缓存集群. tomcat堆内缓存
+        3. Flink处理日志, 主动发现热数据, 缓存起来
+        4. https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/97621982
 
 
 17. Ehcache缓存的数据量特别大如何处理?
@@ -526,6 +597,14 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
 
 19. 如何进行缓存预热? 热点数据如何监控?
     我们用的定时任务进行的缓存预热, 可以用MQ, 更好一点.
+    缓存预热:
+        1. LRU数据删除策略, 构建数据留存队列
+    热点监控:
+        凭借经验，进行预估：例如提前知道了某个活动的开启，那么就将此Key作为热点Key
+        客户端收集：在操作Redis之前对数据进行统计
+        抓包进行评估：Redis使用TCP协议与客户端进行通信，通信协议采用的是RESP，所以能进行拦截包进行解析
+        在proxy层，对每一个 redis 请求进行收集上报
+        Redis自带命令查询：Redis4.0.4版本提供了redis-cli –hotkeys就能找出热点Key
 
 
 
