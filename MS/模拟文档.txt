@@ -795,7 +795,7 @@ situation: 应用上面的应用在当前: what i am looking for is xxx 怎样�
         3. DR:
             slave抢夺, 正式发送数据
             微服务截取Kafka的Gap数据, 重写发给新的master, 补充好数据.
-
+        4. ZK连接不稳定来回飘的情况?
 
 
 
