@@ -1,0 +1,182 @@
+
+
+
+删除排序链表中的重复元素
+给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+示例 1:
+输入: 1->1->2
+输出: 1->2
+示例 2:
+输入: 1->1->2->3->3
+输出: 1->2->3
+
+
+class Main {
+
+	static class LinkNode {
+		int val;
+		LinkNode next;
+		public LinkNode(int val) {
+			this.val = val;
+		}
+	}
+
+	public static void main(String[] args) {
+		LinkNode l1 = new LinkNode(1);
+		LinkNode l2 = new LinkNode(1);
+		LinkNode l3 = new LinkNode(2);
+		LinkNode l4 = new LinkNode(3);
+		LinkNode l5 = new LinkNode(3);
+		l1.next = l2;
+		l2.next = l3;
+		l3.next = l4;
+		l4.next = l5;
+
+		//
+		LinkNode head = remove(l1);
+		while (head != null) {
+			System.out.println(head.val);
+			head = head.next;
+		}
+
+	}
+	public static LinkNode remove(LinkNode l1) {
+		LinkNode before = new LinkNode(-1);
+		LinkNode res = before;
+		before.next = l1;
+		int beforeVal = Integer.MIN_VALUE; //
+		while (before.next != null) {
+			// 1.
+			LinkNode curr = before.next;
+			if (curr.val == beforeVal) {
+				before.next = before.next.next;
+			} else {
+				before = before.next;
+			}
+			beforeVal = curr.val;
+		}
+		return res.next;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++++++++++++++++++++ 字节:
+
+
+id01 {
+	ISN: 00001;
+	CUSIP: 00001;
+	CUSIP1: 00001;
+	CUSIP2: 00001;
+	CUSIP3: 00001;
+
+}
+
+id02 {
+	ISN: 00001;
+
+}
+
+
+
+flink: state:
+id01: 3年抵押
+->ISN: 00001: 美
+
+
+ key[ISN: 00001] , value: [id03:1001, id02:1000, id01:500]
+
+
+ISN: 00001 -> id03
+
+
+user:
+
+
+
+
+live-live: 热备份:
+
+
+kafka ->>  [flink(state:10, 15G) ] -> client
+
+flink : checkP savepo : 15G->10M
+
+[ flink1(state) ] -[ flink2(state) ]
+
+Xflink1 ->
+10min->1s
+flink2 ->
+
+
+UAT: 10,
+at-least-ONce
+
+ZK:
+1. leader
+[ flink1(state) ]X
+
+[ flink2(state) ] V
+
+>++++++++++++++flink1 ---id01---- flink2++++++++++++++>
+
+ZK:
+2. partition:[]
+
+
+-------------
+1. savepoint,
+2. live-live
+3. archi:
+
+flink: state: 1. 消费进度, water . 2. index-IS {async+hbase: } 15G: stateBacken(RockstBD) -> id-> HBase, async stream
+
+
+leader,
+->
+
+
+
+
+
+object: 公众号, 文章
+
+user: {f1, f2, f3, /...}
+
+
+object: [v1, v2, ....]
+
+U:
+
+- 预计算: 公众号
+-
+
+
+redis:
+	object:SET [v1, v2, ....]
+	user:SET {f1, f2, f3, /...}
+
+API:
+	user U object = {res}
+	- object:N, user:M =  O(M), O(n+m)
+
+	- 大V: 1w+
+	- 小V: 1w- V
+
+
+
+
+

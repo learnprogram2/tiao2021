@@ -1,0 +1,292 @@
+4) 实现二分查找：给定一个数组[1,3,5,8,11,15,17,18,24,26,29,33,41]，如输入8，输出True。时间复杂度是多少？
+
+问题描述：给定一个随机数数组，求取这个数组中的逆序对总个数。要求时间效率尽可能高。
+
+逆序对的定义：设 A 为一个有 n 个数字的集合 (n>1)，其中所有数字各不相同。如果存在正整数 i, j 使得 1 ≤ i < j ≤ n 而且 A[i] > A[j]，则 <A[i], A[j]> 这个有序对称为 A 的一个逆序对，也称作逆序数。
+
+例如：数组（3，1，4，5，2）的逆序对有(3,1),(3,2),(4,2),(5,2)，共4个。
+
+
+0,1,2,3,4 ,5 ,6 ,7 ,8 ,9 ,10,11,12
+1,3,5,8,11,15,17,18,24,26,29,33,41
+
+
+l=0, r=5
+0,1,2,3,4 ,5 ,6 ,7 ,8 ,9 ,10,11,12
+1,3,5,8,11,15,17,18,24,26,29,33,41
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+public class Main {
+
+	public static class Node {
+		int val;
+		Node left;
+		Node right;
+		public Node(int val) {
+			this.val = val;
+		}
+	}
+
+
+	public static void main(String[] args) {
+		Node n1 = new Node(1);
+		Node n2 = new Node(2);
+		Node n3 = new Node(3);
+		Node n4 = new Node(4);
+		Node n5 = new Node(5);
+
+		n1.left = n2;
+		n1.right = n3;
+		n2.left = n4;
+		n2.right = n5;
+
+
+		Node res = find(n1, n2, n5);
+		System.out.println(res.val);
+	}
+	public static Node find(Node root, Node t1, Node t2) {
+		//
+		List<Node> path1 = new ArrayList<>();
+		List<Node> path2 = new ArrayList<>();
+
+		findOne(root, t1, path1);
+		findOne(root, t2, path2);
+
+
+		for (int i = 0; i < Math.min(path1.size(), path2.size()); i ++) {
+			if (path1.get(i).val != path2.get(i).val) {
+				return path1.get(i - 1);
+			}
+		}
+		return path1.size() < path2.size() ? path1.get(path1.size() - 1)
+				: path2.get(path2.size() - 1);
+	}
+	public static boolean findOne(Node node, Node target, List<Node> path) {
+		if (node == null) {
+			return false;
+		}
+		if (node.val == target.val) {
+			path.add(node);
+			return true;
+		}
+		path.add(node);
+		// left
+		if (findOne(node.left, target, path)) {
+			return true;
+		}
+		if (findOne(node.right, target, path)) {
+			return true;
+		}
+		path.remove(path.size() - 1);
+		return false;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+++++ 美团题目:
+
+        String s1 = "beauty";
+        String s2 = "beta";
+
+//         [b, e, a, u t y]
+//         [b, ]
+//         [e  ]
+//         t
+//         a      x
+
+        select max(score), course, student from t
+        group by (course)
+
+        1, 2, +3, 4, -5, 6, 7, 8
+
+
+
+
+
+
++++++++ 小红书3
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+示例 1：
+输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
+输出：6
+解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
+
+
+
+++++++++ 腾讯1
+1. HashMap要存储1W个kv, 要设置多少的初始容量?
+
+
+
+
+
+++++++++++ 美团1
+给定一个字符串，请你找出其中不含有重复字符的最长子串的长度
+ababc = 3
+abcde = 5
+aaaaa = 1
+
+
+
+++++++++++ 美团2
+
+
+// SMC, 10 150, 2-5
+// 750G. 10
+// kafka -> flink(bondId -> p1: 150G) ->  (bondId -> p2);
+
+// savepoint: 10min, checkpoint 1min+;
+//
+// flink(state)  ->      kafka
+// zk(1. leader, 2. metadata:map<parition, offset>)
+// flink2(state)
+//-flink3(state)
+// flink-> k8s ->
+// kafka:
+//  1234flink(5)67(8)9
+
+//  flink(state), async+Hbase,
+//  flink (10min, ->30s)
+
+
+
+
+//   // curactor, leaderElect(path)// node1,<- node2
+//      Leader -> (Database<path, value>), Log(aof, ), Follower()
+// 1, 2, 3, 4
+// 1. node,
+// 2. Quorom, session <timeout, cleitnCnxn>
+// time: timeout,  link ->
+
+把字符串转换成整数
+
+数据范围：字符串长度满足
+进阶：空间复杂度  ，时间复杂度
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++ 开始的携程第一个岗位的一个笔试题:
+
+1+2*3+4-2*6/2-6+9-10/2
+
+int index = 0;
+public int sum(String str) {
+	int sum = 0;
+
+	while (index < str.length()){
+		// 1. read next int
+		int num = readInt(str, index);
+		// 2. 操作符
+		int fuHao = readFuhao(str, index);
+		if (fuHao in (+, -)) {
+			sum +/-  num
+		} else {
+			sum +/- chengChu(str, index)
+		}
+	}
+
+
+}
+
+readInt () {
+	index,
+	0 in (0, 9)
+}
+
+chengChu(str, index) {
+	// "2*6/2"
+	Stack<Int> stack = new Stack<>();
+		stack.push(num)
+	while (fuhao != (+/-)) {
+		fuhao
+		num2  = readInt(str, index);
+		num1 = stack.pop();
+		fuhao -> num2 */ num2
+	}
+
+	return 2*6/2;
+}
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++ 携程另一个笔试题
+public static boolean isExtremeBigDecimal_Old(
+            String valueStr,
+            int maxBigDecimalLength,
+            int maxSignificandLength,
+            int maxExponentLength) {
+
+	    // 333333333333333333333333333
+	// --
+        if (StringValidation.isBlank(valueStr)) {
+            return f;
+        }
+	// -- 1.00000000001111e2
+        if (valueStr.length() > 20) {
+            return true;
+        }
+	// -+
+
+	// 科学表达    ; // 1.00000000E01111E21   -1
+        final int index = Math.max(valueStr.indexOf('e'), valueStr.indexOf('E'));
+
+	// 数字长度
+        final int significandLength = index == -1 ? valueStr.length() : index;
+        if (significandLength > 10 && index > 0) {
+            return true;
+        }
+	// e后的数,
+        final int exponentLength = index == -1 ? 0 : valueStr.length() - index - 1;
+	// num=21
+        if (num> 20) {
+            return true;
+        }
+	// -+1.xxxxxe
+        return false;
+    }
+
+
